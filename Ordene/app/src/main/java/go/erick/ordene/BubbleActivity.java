@@ -1,13 +1,17 @@
 package go.erick.ordene;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import java.util.Random;
 
 public class BubbleActivity extends AppCompatActivity {
 
@@ -16,6 +20,7 @@ public class BubbleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bubble);
         final Troca troca = new Troca();
+        int[] lista = new int[10];
         final Button button0 = (Button) findViewById (R.id.button0);
         final Button button1 = (Button) findViewById (R.id.button1);
         final Button button2 = (Button) findViewById (R.id.button2);
@@ -26,6 +31,40 @@ public class BubbleActivity extends AppCompatActivity {
         final Button button7 = (Button) findViewById (R.id.button7);
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
+        Random gerador = new Random();
+        int numero = gerador.nextInt(10);
+        button0.setText(Integer.toString(numero));
+        lista[0] = numero;
+        numero = gerador.nextInt(10);
+        button1.setText(Integer.toString(numero));
+        lista[1] = numero;
+        numero = gerador.nextInt(10);
+        button2.setText(Integer.toString(numero));
+        lista[2] = numero;
+        numero = gerador.nextInt(10);
+        button3.setText(Integer.toString(numero));
+        lista[3] = numero;
+        numero = gerador.nextInt(10);
+        button4.setText(Integer.toString(numero));
+        lista[4] = numero;
+        numero = gerador.nextInt(10);
+        button5.setText(Integer.toString(numero));
+        lista[5] = numero;
+        numero = gerador.nextInt(10);
+        button6.setText(Integer.toString(numero));
+        lista[6] = numero;
+        numero = gerador.nextInt(10);
+        button7.setText(Integer.toString(numero));
+        lista[7] = numero;
+        numero = gerador.nextInt(10);
+        button8.setText(Integer.toString(numero));
+        lista[8] = numero;
+        numero = gerador.nextInt(10);
+        button9.setText(Integer.toString(numero));
+        lista[9] = numero;
+
+        final BubbleSort bubble = new BubbleSort(lista);
+        bubble.sort();
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +74,36 @@ public class BubbleActivity extends AppCompatActivity {
                 if(troca.insere(0)){
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
+                    if(bubble.getTrocados().get(0).getTrocado1()!=0 && bubble.getTrocados().get(0).getTrocado2() !=0){
+                        new AlertDialog.Builder(BubbleActivity.this)
+                                .setTitle("GAME OVER")
+                                .setMessage("Voce errou o algoritmo")
+                                .setCancelable(false)
+                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnBtn = new Intent(getApplicationContext(),
+                                                MainActivity.class);
+
+                                        startActivity(returnBtn);
+                                    }
+                                }).create().show();
+                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(BubbleActivity.this)
+                                .setTitle("GAME OVER")
+                                .setMessage("Voce errou o algoritmo")
+                                .setCancelable(false)
+                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnBtn = new Intent(getApplicationContext(),
+                                                MainActivity.class);
+
+                                        startActivity(returnBtn);
+                                    }
+                                }).create().show();
+                    }
+                    bubble.getTrocados().remove(0);
                     switch (bot){
                         case 1: button0.setText(button1.getText());
                                 button1.setText(texto);
@@ -97,6 +166,38 @@ public class BubbleActivity extends AppCompatActivity {
                 if(troca.insere(1)){
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
+                    if(bubble.getTrocados().get(0).getTrocado1()!=1 && bubble.getTrocados().get(0).getTrocado2() !=1){
+                        new AlertDialog.Builder(BubbleActivity.this)
+                                .setTitle("GAME OVER")
+                                .setMessage("Voce errou o algoritmo")
+                                .setCancelable(false)
+                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnBtn = new Intent(getApplicationContext(),
+                                                MainActivity.class);
+
+                                        startActivity(returnBtn);
+                                    }
+                                }).create().show();
+
+                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(BubbleActivity.this)
+                                .setTitle("GAME OVER")
+                                .setMessage("Voce errou o algoritmo")
+                                .setCancelable(false)
+                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent returnBtn = new Intent(getApplicationContext(),
+                                                MainActivity.class);
+
+                                        startActivity(returnBtn);
+                                    }
+                                }).create().show();
+
+                    }
+                    bubble.getTrocados().remove(0);
                     switch (bot){
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
