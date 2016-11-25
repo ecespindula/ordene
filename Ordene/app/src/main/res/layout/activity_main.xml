@@ -20,26 +20,27 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Iniciar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/iniciar"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark" />
-
-    <Button
         android:text="Sair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sair"
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@android:color/holo_green_dark"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/instrucoes"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:text="Iniciar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/iniciar"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@android:color/holo_green_dark"
+        android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="33dp" />
+        android:layout_marginTop="30dp" />
 
     <Button
         android:text="Intruçoes"
@@ -48,9 +49,9 @@
         android:id="@+id/instrucoes"
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@android:color/holo_green_dark"
-        android:layout_above="@+id/sair"
+        android:layout_below="@+id/iniciar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginTop="30dp" />
 
 </RelativeLayout>
