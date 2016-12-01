@@ -2,20 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_bubble"
+    android:id="@+id/content_insertion"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:layout_below="@+id/bubble"
-    tools:context="go.erick.ordene.BubbleActivity">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="go.erick.ordene.InsertionActivity"
+    >
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bubble"
+        app:srcCompat="@drawable/insertion"
         android:id="@+id/imageView2"
         android:layout_marginBottom="392dp"
         android:layout_alignParentBottom="true"
@@ -29,7 +30,8 @@
         android:id="@+id/button0"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="1"
@@ -40,7 +42,8 @@
         android:layout_toEndOf="@+id/button0"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button1" />
+        android:id="@+id/button1"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="2"
@@ -51,7 +54,8 @@
         android:layout_toEndOf="@+id/button1"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button2" />
+        android:id="@+id/button2"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="3"
@@ -62,7 +66,8 @@
         android:layout_toEndOf="@+id/button2"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button3" />
+        android:id="@+id/button3"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="4"
@@ -73,7 +78,8 @@
         android:layout_toEndOf="@+id/button3"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button4" />
+        android:id="@+id/button4"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="5"
@@ -82,7 +88,8 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button5" />
+        android:id="@+id/button5"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="6"
@@ -93,7 +100,8 @@
         android:layout_toEndOf="@+id/button5"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button6" />
+        android:id="@+id/button6"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="7"
@@ -104,7 +112,8 @@
         android:layout_toEndOf="@+id/button6"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button7" />
+        android:id="@+id/button7"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="8"
@@ -115,7 +124,8 @@
         android:layout_toEndOf="@+id/button7"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button8" />
+        android:id="@+id/button8"
+        android:background="@android:color/holo_blue_bright"/>
 
     <Button
         android:text="9"
@@ -126,7 +136,8 @@
         android:layout_toEndOf="@+id/button8"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:id="@+id/button9" />
+        android:id="@+id/button9"
+        android:background="@android:color/holo_blue_bright"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -136,5 +147,7 @@
         android:id="@+id/instrucaoBubble"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Instruçoes: \n 1)Percorra o vetor a partir da primeira posiçao; \n 2)Se o valor da proxima posiçao for menor, troque; \n 3)Parta para a posiçao seguinte e repita o passo 2; \n 4)Chegando na ultima posiçao, volte ao inicio caso tenha feito ao menos uma troca; \n 5)Caso chegue ao fim sem realizar um troca, chegou ao fim." />
+        android:text="Instruçoes: \n 1)Percorra o vetor da esquerda para a direita a partir da primeira posicao; \n 2)Se o valor da posiçao atual for menor que o da esquerda, troque; \n 3)Continue comparando o valor trocado com os valores a esquerda, trocando se for menor; \n 4)Chegando na ultima posiçao, o vetor ja deve estar ordenado."
+        app:srcCompat="@drawable/insertion" />
+
 </RelativeLayout>

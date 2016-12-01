@@ -7,14 +7,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
 import java.util.Random;
 
-public class BubbleActivity extends AppCompatActivity {
+public class SelectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bubble);
+        setContentView(R.layout.activity_selection);
+
         final Troca troca = new Troca();
         int[] lista = new int[10];
         final Button button0 = (Button) findViewById (R.id.button0);
@@ -59,19 +61,19 @@ public class BubbleActivity extends AppCompatActivity {
         button9.setText(Integer.toString(numero));
         lista[9] = numero;
 
-        final BubbleSort bubble = new BubbleSort(lista);
-        bubble.sort();
+        final SelectionSort selection = new SelectionSort(lista);
+        selection.sort();
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 button0.setBackgroundResource(R.color.Red);
-                button0.setClickable(false);
+                //button0.setClickable(false);
                 if(troca.insere(0)){
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=0 && bubble.getTrocados().get(0).getTrocado2() !=0){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=0 && selection.getTrocados().get(0).getTrocado2() !=0){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -84,8 +86,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -99,13 +101,13 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 1: button0.setText(button1.getText());
-                                button1.setText(texto);
-                                button1.setBackgroundResource(R.color.LightBlue);
-                                button1.setClickable(true);
-                                break;
+                            button1.setText(texto);
+                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setClickable(true);
+                            break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(R.color.LightBlue);
@@ -150,8 +152,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button0.setBackgroundResource(R.color.LightBlue);
                     button0.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -173,12 +175,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button1.setBackgroundResource(R.color.Red);
-                button1.setClickable(false);
+                //button1.setClickable(false);
                 if(troca.insere(1)){
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=1 && bubble.getTrocados().get(0).getTrocado2() !=1){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=1 && selection.getTrocados().get(0).getTrocado2() !=1){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -192,8 +194,8 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
 
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -208,7 +210,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
@@ -259,8 +261,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button1.setBackgroundResource(R.color.LightBlue);
                     button1.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -282,12 +284,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button2.setBackgroundResource(R.color.Red);
-                button2.setClickable(false);
+               // button2.setClickable(false);
                 if(troca.insere(2)){
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=2 && bubble.getTrocados().get(0).getTrocado2() !=2){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=2 && selection.getTrocados().get(0).getTrocado2() !=2){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -300,8 +302,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -315,7 +317,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button2.setText(button0.getText());
                             button0.setText(texto);
@@ -366,8 +368,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button2.setBackgroundResource(R.color.LightBlue);
                     button2.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -389,12 +391,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button3.setBackgroundResource(R.color.Red);
-                button3.setClickable(false);
+                //button3.setClickable(false);
                 if(troca.insere(3)){
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=3 && bubble.getTrocados().get(0).getTrocado2() !=3){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=3 && selection.getTrocados().get(0).getTrocado2() !=3){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -407,8 +409,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -422,7 +424,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button3.setText(button0.getText());
                             button0.setText(texto);
@@ -473,8 +475,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button3.setBackgroundResource(R.color.LightBlue);
                     button3.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -496,12 +498,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button4.setBackgroundResource(R.color.Red);
-                button4.setClickable(false);
+               // button4.setClickable(false);
                 if(troca.insere(4)){
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=4 && bubble.getTrocados().get(0).getTrocado2() !=4){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=4 && selection.getTrocados().get(0).getTrocado2() !=4){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -514,8 +516,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -529,7 +531,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button4.setText(button0.getText());
                             button0.setText(texto);
@@ -580,8 +582,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button4.setBackgroundResource(R.color.LightBlue);
                     button4.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -603,12 +605,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button5.setBackgroundResource(R.color.Red);
-                button5.setClickable(false);
+               // button5.setClickable(false);
                 if(troca.insere(5)){
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=5 && bubble.getTrocados().get(0).getTrocado2() !=5){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=5 && selection.getTrocados().get(0).getTrocado2() !=5){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -621,8 +623,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -636,7 +638,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button5.setText(button0.getText());
                             button0.setText(texto);
@@ -687,8 +689,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button5.setBackgroundResource(R.color.LightBlue);
                     button5.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -710,12 +712,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button6.setBackgroundResource(R.color.Red);
-                button6.setClickable(false);
+                //button6.setClickable(false);
                 if(troca.insere(6)){
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=6 && bubble.getTrocados().get(0).getTrocado2() !=6){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=6 && selection.getTrocados().get(0).getTrocado2() !=6){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -728,8 +730,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -743,7 +745,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button6.setText(button0.getText());
                             button0.setText(texto);
@@ -794,8 +796,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button6.setBackgroundResource(R.color.LightBlue);
                     button6.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -817,12 +819,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button7.setBackgroundResource(R.color.Red);
-                button7.setClickable(false);
+                //button7.setClickable(false);
                 if(troca.insere(7)){
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=7 && bubble.getTrocados().get(0).getTrocado2() !=7){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=7 && selection.getTrocados().get(0).getTrocado2() !=7){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -835,8 +837,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -850,7 +852,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button7.setText(button0.getText());
                             button0.setText(texto);
@@ -901,8 +903,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button7.setBackgroundResource(R.color.LightBlue);
                     button7.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -924,12 +926,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button8.setBackgroundResource(R.color.Red);
-                button8.setClickable(false);
+                //button8.setClickable(false);
                 if(troca.insere(8)){
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=8 && bubble.getTrocados().get(0).getTrocado2() !=8){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=8 && selection.getTrocados().get(0).getTrocado2() !=8){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -942,8 +944,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -957,7 +959,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button8.setText(button0.getText());
                             button0.setText(texto);
@@ -1008,8 +1010,8 @@ public class BubbleActivity extends AppCompatActivity {
                     button8.setBackgroundResource(R.color.LightBlue);
                     button8.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -1031,12 +1033,12 @@ public class BubbleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button9.setBackgroundResource(R.color.Red);
-                button9.setClickable(false);
+                //button9.setClickable(false);
                 if(troca.insere(9)){
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
-                    if(bubble.getTrocados().get(0).getTrocado1()!=9 && bubble.getTrocados().get(0).getTrocado2() !=9){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().get(0).getTrocado1()!=9 && selection.getTrocados().get(0).getTrocado2() !=9){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -1049,8 +1051,8 @@ public class BubbleActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
@@ -1064,7 +1066,7 @@ public class BubbleActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
-                    bubble.getTrocados().remove(0);
+                    selection.getTrocados().remove(0);
                     switch (bot){
                         case 0: button9.setText(button0.getText());
                             button0.setText(texto);
@@ -1106,17 +1108,17 @@ public class BubbleActivity extends AppCompatActivity {
                             button8.setBackgroundResource(R.color.LightBlue);
                             button8.setClickable(true);
                             break;
-                        case 9: button9.setText(button9.getText());
-                            button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
-                            button9.setClickable(true);
+                        case 2: button9.setText(button2.getText());
+                            button2.setText(texto);
+                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setClickable(true);
                             break;
                     }
                     button9.setBackgroundResource(R.color.LightBlue);
                     button9.setClickable(true);
                     troca.reseta();
-                    if(bubble.getTrocados().isEmpty()){
-                        new AlertDialog.Builder(BubbleActivity.this)
+                    if(selection.getTrocados().isEmpty()){
+                        new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
                                 .setCancelable(false)
@@ -1131,17 +1133,13 @@ public class BubbleActivity extends AppCompatActivity {
                                 }).create().show();
                     }
                 }
-
-
-
             }
         });
-
 
     }
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(BubbleActivity.this, Choices.class);
+        Intent intent = new Intent(SelectionActivity.this, Choices.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
