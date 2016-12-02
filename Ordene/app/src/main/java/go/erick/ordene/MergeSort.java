@@ -43,10 +43,14 @@ public class MergeSort {
         metadeTamanho = (posicaoInicio + posicaoFim ) / 2;
         MergeSort a = new MergeSort(vet, posicaoInicio, metadeTamanho);
         a.sort();
-        trocados.addAll(a.getTrocados());
+        if(!a.getTrocados().isEmpty()){
+            trocados.addAll(a.getTrocados());
+        }
         MergeSort b = new MergeSort(vet, metadeTamanho + 1, posicaoFim);
         b.sort();
-        trocados.addAll(b.getTrocados());
+        if(!a.getTrocados().isEmpty()){
+            trocados.addAll(b.getTrocados());
+        }
 
         // intercalacao no vetor temporario t
         i = posicaoInicio;
@@ -73,6 +77,13 @@ public class MergeSort {
                     }
                     else {
                         vetorTemp[k] = vet[j];
+                        if(posicaoInicio == 0 && posicaoFim == 9){
+                            Trocado tro=new Trocado(k,j);
+                            trocados.add(tro);
+                        }else {
+                            Trocado tro = new Trocado(i, j);
+                            trocados.add(tro);
+                        }
                         j++;
                         k++;
                     }
@@ -84,8 +95,7 @@ public class MergeSort {
         for(i = posicaoInicio; i <= posicaoFim; i++) {
 
             vet[i] = vetorTemp[i - posicaoInicio];
-            Trocado tro=new Trocado(i,i+posicaoInicio);
-            trocados.add(tro);
+
             System.out.println();
 
         }

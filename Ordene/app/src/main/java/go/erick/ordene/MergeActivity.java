@@ -66,7 +66,10 @@ public class MergeActivity extends AppCompatActivity {
 
         final MergeSort merge = new MergeSort(lista, 0, lista.length-1);
         merge.sort();
-        System.out.println();
+        int i;
+        for(i = 0; i < merge.getTrocados().size();i++) {
+            System.out.println(merge.getTrocados().get(i).getTrocado1()+" "+merge.getTrocados().get(i).getTrocado2());
+        }
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
