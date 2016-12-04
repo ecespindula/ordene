@@ -16,7 +16,7 @@ public class Choices extends AppCompatActivity {
         Button insertion = (Button) findViewById (R.id.insertion);
         Button selection = (Button) findViewById (R.id.selection);
         Button quick = (Button) findViewById (R.id.quick);
-        Button merge = (Button) findViewById (R.id.merge);
+        Button heap = (Button) findViewById (R.id.heap);
         Button voltar = (Button) findViewById (R.id.voltar);
 
         bubble.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +51,10 @@ public class Choices extends AppCompatActivity {
             }
         });
 
-        merge.setOnClickListener(new View.OnClickListener() {
+        heap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Choices.this, MergeActivity.class);
+                Intent intent = new Intent(Choices.this, HeapActivity.class);
                 startActivity(intent);
             }
         });

@@ -58,6 +58,7 @@ public class QuickSort {
                 vetor[i] = vetor[f];
                 vetor[f] = troca;
                 Trocado tro=new Trocado(i,f);
+                tro.setPivo(inicio);
                 trocados.add(tro);
                 i++;
                 f--;
@@ -66,6 +67,7 @@ public class QuickSort {
         vetor[inicio] = vetor[f];
         vetor[f] = pivo;
         Trocado tro=new Trocado(inicio,f);
+        tro.setPivo(inicio);
         trocados.add(tro);
         return f;
     }

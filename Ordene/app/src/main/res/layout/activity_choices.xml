@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#d2e6f7"
     tools:context="go.erick.ordene.Choices">
 
     <Button
@@ -69,10 +70,10 @@
         android:layout_marginTop="30dp" />
 
     <Button
-        android:text="Merge Sort"
+        android:text="Heap Sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/merge"
+        android:id="@+id/heap"
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@android:color/holo_green_dark"
         android:layout_below="@+id/quick"

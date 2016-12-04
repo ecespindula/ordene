@@ -60,16 +60,20 @@ public class QuickActivity extends AppCompatActivity {
         numero = gerador.nextInt(100);
         button9.setText(Integer.toString(numero));
         lista[9] = numero;
+        button0.setBackgroundResource(R.color.Orange);
 
         final QuickSort quick = new QuickSort(lista, 0, lista.length-1);
         quick.sort();
-        System.out.println("Teste");
+        final int[] pivoAtual = {0};
+        button0.setBackgroundResource(R.color.Orange);
+
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 button0.setBackgroundResource(R.color.Red);
-                button0.setClickable(false);
+                int cor, cor2;
+                //button0.setClickable(false);
                 if(troca.insere(0)){
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
@@ -102,55 +106,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 0){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 1: button0.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 3: button0.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button0.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button0.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button0.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button0.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button0.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button0.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button0.setBackgroundResource(R.color.LightBlue);
+                    button0.setBackgroundResource(cor2);
                     button0.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -168,6 +182,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -176,7 +233,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button1.setBackgroundResource(R.color.Red);
-                button1.setClickable(false);
+                int cor, cor2;
+                //button1.setClickable(false);
                 if(troca.insere(1)){
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
@@ -211,55 +269,65 @@ public class QuickActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 1){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 2: button1.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 3: button1.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button1.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button1.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button1.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button1.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button1.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button1.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button1.setBackgroundResource(R.color.LightBlue);
+                    button1.setBackgroundResource(cor2);
                     button1.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -277,6 +345,50 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -285,7 +397,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button2.setBackgroundResource(R.color.Red);
-                button2.setClickable(false);
+                int cor, cor2;
+                //button2.setClickable(false);
                 if(troca.insere(2)){
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
@@ -318,55 +431,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 2){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button2.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button2.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button2.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button2.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button2.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button2.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button2.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button2.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button2.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button2.setBackgroundResource(R.color.LightBlue);
+                    button2.setBackgroundResource(cor2);
                     button2.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -384,6 +507,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -392,7 +558,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button3.setBackgroundResource(R.color.Red);
-                button3.setClickable(false);
+                int cor, cor2;
+                //button3.setClickable(false);
                 if(troca.insere(3)){
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
@@ -425,55 +592,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 3){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button3.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button3.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 2: button3.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 4: button3.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button3.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button3.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button3.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button3.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button3.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button3.setBackgroundResource(R.color.LightBlue);
+                    button3.setBackgroundResource(cor2);
                     button3.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -491,6 +668,50 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -499,7 +720,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button4.setBackgroundResource(R.color.Red);
-                button4.setClickable(false);
+                int cor,cor2;
+                //button4.setClickable(false);
                 if(troca.insere(4)){
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
@@ -532,55 +754,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 4){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button4.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button4.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button4.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 2: button4.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 5: button4.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button4.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button4.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button4.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button4.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button4.setBackgroundResource(R.color.LightBlue);
+                    button4.setBackgroundResource(cor2);
                     button4.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -598,6 +830,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                       switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -606,7 +881,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button5.setBackgroundResource(R.color.Red);
-                button5.setClickable(false);
+                int cor, cor2;
+                //button5.setClickable(false);
                 if(troca.insere(5)){
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
@@ -639,55 +915,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 5){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button5.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button5.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button5.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button5.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 2: button5.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 6: button5.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button5.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button5.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button5.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button5.setBackgroundResource(R.color.LightBlue);
+                    button5.setBackgroundResource(cor2);
                     button5.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -705,6 +991,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -713,7 +1042,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button6.setBackgroundResource(R.color.Red);
-                button6.setClickable(false);
+                int cor, cor2;
+                //button6.setClickable(false);
                 if(troca.insere(6)){
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
@@ -746,55 +1076,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 6){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button6.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button6.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button6.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button6.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button6.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 2: button6.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 7: button6.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button6.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button6.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button6.setBackgroundResource(R.color.LightBlue);
+                    button6.setBackgroundResource(cor2);
                     button6.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -812,6 +1152,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -820,7 +1203,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button7.setBackgroundResource(R.color.Red);
-                button7.setClickable(false);
+                int cor, cor2;
+                //button7.setClickable(false);
                 if(troca.insere(7)){
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
@@ -853,55 +1237,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 7){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button7.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button7.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button7.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button7.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button7.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button7.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 2: button7.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 8: button7.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 9: button7.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button7.setBackgroundResource(R.color.LightBlue);
+                    button7.setBackgroundResource(cor2);
                     button7.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -919,6 +1313,49 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -927,7 +1364,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button8.setBackgroundResource(R.color.Red);
-                button8.setClickable(false);
+                int cor, cor2;
+                //button8.setClickable(false);
                 if(troca.insere(8)){
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
@@ -960,55 +1398,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 8){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button8.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button8.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button8.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button8.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button8.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button8.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button8.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 2: button8.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                         case 9: button8.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            button9.setBackgroundResource(cor);
                             button9.setClickable(true);
                             break;
                     }
-                    button8.setBackgroundResource(R.color.LightBlue);
+                    button8.setBackgroundResource(cor2);
                     button8.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -1026,6 +1474,50 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });
@@ -1034,7 +1526,8 @@ public class QuickActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 button9.setBackgroundResource(R.color.Red);
-                button9.setClickable(false);
+                int cor, cor2;
+                //button9.setClickable(false);
                 if(troca.insere(9)){
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
@@ -1067,55 +1560,65 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+                    if(quick.getTrocados().get(0).getPivo() == 9){
+                        cor = R.color.Green;
+                        cor2 = R.color.LightBlue;
+                    }else if(quick.getTrocados().get(0).getPivo() == bot){
+                        cor2 = R.color.Green;
+                        cor = R.color.LightBlue;
+                    }else{
+                        cor = R.color.LightBlue;
+                        cor2 = R.color.LightBlue;
+                    }
                     quick.getTrocados().remove(0);
                     switch (bot){
                         case 0: button9.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            button0.setBackgroundResource(cor);
                             button0.setClickable(true);
                             break;
                         case 1: button9.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setBackgroundResource(cor);
                             button1.setClickable(true);
                             break;
                         case 3: button9.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            button3.setBackgroundResource(cor);
                             button3.setClickable(true);
                             break;
                         case 4: button9.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            button4.setBackgroundResource(cor);
                             button4.setClickable(true);
                             break;
                         case 5: button9.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            button5.setBackgroundResource(cor);
                             button5.setClickable(true);
                             break;
                         case 6: button9.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            button6.setBackgroundResource(cor);
                             button6.setClickable(true);
                             break;
                         case 7: button9.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            button7.setBackgroundResource(cor);
                             button7.setClickable(true);
                             break;
                         case 8: button9.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            button8.setBackgroundResource(cor);
                             button8.setClickable(true);
                             break;
                         case 2: button9.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            button2.setBackgroundResource(cor);
                             button2.setClickable(true);
                             break;
                     }
-                    button9.setBackgroundResource(R.color.LightBlue);
+                    button9.setBackgroundResource(cor2);
                     button9.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
@@ -1133,6 +1636,50 @@ public class QuickActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }
+
+                        switch (quick.getTrocados().get(0).getPivo()){
+                            case 0:
+                                button0.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 0;
+                                break;
+                            case 1:
+                                button1.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 1;
+                                break;
+                            case 2:
+                                button2.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 2;
+                                break;
+                            case 3:
+                                button3.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 3;
+                                break;
+                            case 4:
+                                button4.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 4;
+                                break;
+                            case 5:
+                                button5.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 5;
+                                break;
+                            case 6:
+                                button6.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 6;
+                                break;
+                            case 7:
+                                button7.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 7;
+                                break;
+                            case 8:
+                                button8.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 8;
+                                break;
+                            case 9:
+                                button9.setBackgroundResource(R.color.Orange);
+                                pivoAtual[0] = 9;
+                                break;
+                        }
+
                 }
             }
         });

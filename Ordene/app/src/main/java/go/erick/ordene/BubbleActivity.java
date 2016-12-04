@@ -102,10 +102,10 @@ public class BubbleActivity extends AppCompatActivity {
                     bubble.getTrocados().remove(0);
                     switch (bot){
                         case 1: button0.setText(button1.getText());
-                                button1.setText(texto);
-                                button1.setBackgroundResource(R.color.LightBlue);
-                                button1.setClickable(true);
-                                break;
+                            button1.setText(texto);
+                            button1.setBackgroundResource(R.color.LightBlue);
+                            button1.setClickable(true);
+                            break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(R.color.LightBlue);
