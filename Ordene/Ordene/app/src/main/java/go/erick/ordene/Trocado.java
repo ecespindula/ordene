@@ -7,10 +7,20 @@ package go.erick.ordene;
 public class Trocado {
     private int trocado1;
     private int trocado2;
+    private boolean flagFim=false;
+    private int pivo;
 
     public Trocado(int trocado1, int trocado2) {
         this.trocado1 = trocado1;
         this.trocado2 = trocado2;
+    }
+
+    public boolean isFlagFim() {
+        return flagFim;
+    }
+
+    public void setFlagFim(boolean flagFim) {
+        this.flagFim = flagFim;
     }
 
     public int getTrocado1() {
@@ -29,5 +39,11 @@ public class Trocado {
         this.trocado2 = trocado2;
     }
 
+    public int getPivo() {
+        return pivo;
+    }
 
+    public void setPivo(int pivo) {
+        this.pivo = pivo;
+    }
 }

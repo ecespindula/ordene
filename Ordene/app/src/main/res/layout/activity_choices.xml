@@ -12,85 +12,97 @@
     tools:context="go.erick.ordene.Choices">
 
     <Button
-        android:text="Quick Sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
-        android:layout_below="@+id/selection"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
-
-    <Button
         android:text="Selection Sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/selection"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_below="@+id/insertion"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:fontFamily="casual"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:textColor="@color/Red"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Bubble Sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bubble"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:fontFamily="casual"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:textColor="@color/Red"
+        android:textStyle="normal|bold" />
 
     <Button
         android:text="Insertion Sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/insertion"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_below="@+id/bubble"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
-
-    <Button
-        android:text="Quick Sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/quick"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
-        android:layout_below="@+id/selection"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
-
-    <Button
-        android:text="Heap Sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/heap"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
-        android:layout_below="@+id/quick"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:fontFamily="casual"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/Red" />
 
     <Button
         android:text="Voltar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/voltar"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@android:color/holo_green_dark"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        android:fontFamily="casual"
+        android:textSize="24sp"
+        android:typeface="normal"
+        android:textColor="@color/Red"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="Heap Sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heap"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_above="@+id/voltar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="55dp"
+        android:fontFamily="casual"
+        android:textSize="24sp"
+        android:textColor="@color/Red"
+        android:textStyle="normal|bold"
+        android:typeface="normal" />
+
+    <Button
+        android:text="Quick Sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/quick"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:fontFamily="casual"
+        android:typeface="normal"
+        android:textSize="24sp"
+        android:layout_below="@+id/selection"
+        android:layout_above="@+id/heap"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="normal|bold"
+        android:textColor="@color/Red" />
 
 </RelativeLayout>

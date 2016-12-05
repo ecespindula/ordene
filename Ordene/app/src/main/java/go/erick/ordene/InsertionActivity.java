@@ -65,6 +65,17 @@ public class InsertionActivity extends AppCompatActivity {
         final InsertionSort insertion = new InsertionSort(lista);
         insertion.sort();
 
+        checaCerto(insertion, 0, button0);
+        checaCerto(insertion, 1, button1);
+        checaCerto(insertion, 2, button2);
+        checaCerto(insertion, 3, button3);
+        checaCerto(insertion, 4, button4);
+        checaCerto(insertion, 5, button5);
+        checaCerto(insertion, 6, button6);
+        checaCerto(insertion, 7, button7);
+        checaCerto(insertion, 8, button8);
+        checaCerto(insertion, 9, button9);
+
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +85,8 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=0 && insertion.getTrocados().get(0).getTrocado2() !=0){
-                        new AlertDialog.Builder(InsertionActivity.this)                                .setTitle("GAME OVER")
+                        new AlertDialog.Builder(InsertionActivity.this)
+                                .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
                                 .setCancelable(false)
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
@@ -105,51 +117,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 1: button0.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 1, button1);
                             button1.setClickable(true);
                             break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 2, button2);
                             button2.setClickable(true);
                             break;
                         case 3: button0.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 3, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button0.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 4, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button0.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 5, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button0.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 6, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button0.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 7, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button0.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 8, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button0.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 9, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button0.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 0, button0);
                     button0.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -214,51 +226,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 0, button0);
                             button0.setClickable(true);
                             break;
                         case 2: button1.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 2, button2);
                             button2.setClickable(true);
                             break;
                         case 3: button1.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 3, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button1.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 4, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button1.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 5, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button1.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 6, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button1.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 7, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button1.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 8, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button1.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 9, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button1.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 1, button1);
                     button1.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -321,51 +333,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button2.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 0, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button2.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, 1, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button2.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button2.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button2.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button2.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button2.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button2.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button2.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button2.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 2, button2);
                     button2.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -428,51 +440,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button3.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button3.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 2: button3.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 4: button3.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button3.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button3.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button3.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button3.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button3.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button3.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 3, button3);
                     button3.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -535,51 +547,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button4.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button4.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button4.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 2: button4.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 5: button4.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button4.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button4.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button4.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button4.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button4.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 4, button4);
                     button4.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -642,51 +654,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button5.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button5.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button5.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button5.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 2: button5.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 6: button5.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button5.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button5.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button5.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button5.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 5, button5);
                     button5.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -749,51 +761,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button6.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button6.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button6.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button6.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button6.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 2: button6.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 7: button6.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button6.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button6.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button6.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 6, button6);
                     button6.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -856,51 +868,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button7.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button7.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button7.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button7.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button7.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button7.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 2: button7.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 8: button7.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
                         case 9: button7.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button7.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 7, button7);
                     button7.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -963,51 +975,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button8.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button8.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button8.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button8.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button8.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button8.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button8.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 2: button8.setText(button2.getText());
                             button2.setText(texto);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button2);
                             button2.setClickable(true);
                             break;
                         case 9: button8.setText(button9.getText());
                             button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button9);
                             button9.setClickable(true);
                             break;
                     }
-                    button8.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 8, button8);
                     button8.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -1070,51 +1082,51 @@ public class InsertionActivity extends AppCompatActivity {
                     switch (bot){
                         case 0: button9.setText(button0.getText());
                             button0.setText(texto);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button0);
                             button0.setClickable(true);
                             break;
                         case 1: button9.setText(button1.getText());
                             button1.setText(texto);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button1);
                             button1.setClickable(true);
                             break;
                         case 3: button9.setText(button3.getText());
                             button3.setText(texto);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button3);
                             button3.setClickable(true);
                             break;
                         case 4: button9.setText(button4.getText());
                             button4.setText(texto);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button4);
                             button4.setClickable(true);
                             break;
                         case 5: button9.setText(button5.getText());
                             button5.setText(texto);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button5);
                             button5.setClickable(true);
                             break;
                         case 6: button9.setText(button6.getText());
                             button6.setText(texto);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button6);
                             button6.setClickable(true);
                             break;
                         case 7: button9.setText(button7.getText());
                             button7.setText(texto);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button7);
                             button7.setClickable(true);
                             break;
                         case 8: button9.setText(button8.getText());
                             button8.setText(texto);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(insertion, bot, button8);
                             button8.setClickable(true);
                             break;
-                        case 9: button9.setText(button9.getText());
-                            button9.setText(texto);
-                            button9.setBackgroundResource(R.color.LightBlue);
-                            button9.setClickable(true);
+                        case 2: button9.setText(button2.getText());
+                            button2.setText(texto);
+                            checaCerto(insertion, bot, button2);
+                            button2.setClickable(true);
                             break;
                     }
-                    button9.setBackgroundResource(R.color.LightBlue);
+                    checaCerto(insertion, 9, button9);
                     button9.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
@@ -1133,8 +1145,12 @@ public class InsertionActivity extends AppCompatActivity {
                                 }).create().show();
                     }
                 }
+
+
+
             }
         });
+
 
     }
     @Override
@@ -1142,6 +1158,24 @@ public class InsertionActivity extends AppCompatActivity {
         Intent intent = new Intent(InsertionActivity.this, Choices.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    public void checaCerto(InsertionSort insertion, int id, Button button){
+        boolean flag = false;
+        if(insertion.getVet()[id] == Integer.parseInt((String)button.getText())){
+            for(int i = id+1; i< insertion.getTrocados().size()-1; i++){
+                if(insertion.getTrocados().get(i).getTrocado1() == id || insertion.getTrocados().get(i).getTrocado1() == id){
+                    flag=true;
+                }
+            }
+            if(!flag){
+                button.setBackgroundResource(R.color.Green);
+            }else {
+                button.setBackgroundResource(R.color.LightBlue);
+            }
+        }else{
+            button.setBackgroundResource(R.color.LightBlue);
+        }
     }
 
 

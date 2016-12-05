@@ -64,7 +64,6 @@ public class QuickActivity extends AppCompatActivity {
 
         final QuickSort quick = new QuickSort(lista, 0, lista.length-1);
         quick.sort();
-        final int[] pivoAtual = {0};
         button0.setBackgroundResource(R.color.Orange);
 
 
@@ -115,6 +114,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(0 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -181,49 +184,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else {
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                    switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -278,6 +250,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(1 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -344,50 +320,19 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
-                    }
+                    }else {
 
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
+                    }
 
                 }
             }
@@ -440,6 +385,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(2 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -506,50 +455,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                    switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
-
                 }
             }
         });
@@ -601,6 +518,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(3 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -667,50 +588,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -763,6 +652,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(4 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -829,49 +722,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                       switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -924,6 +786,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(5 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -990,49 +856,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else {
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -1085,6 +920,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(6 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -1151,49 +990,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -1246,6 +1054,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(7 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -1312,49 +1124,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -1407,6 +1188,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(8 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -1473,50 +1258,18 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
-
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
 
                 }
             }
@@ -1569,6 +1322,10 @@ public class QuickActivity extends AppCompatActivity {
                     }else{
                         cor = R.color.LightBlue;
                         cor2 = R.color.LightBlue;
+                    }
+                    if(9 == bot){
+                        cor = R.color.Green;
+                        cor2 = R.color.Green;
                     }
                     quick.getTrocados().remove(0);
                     switch (bot){
@@ -1635,50 +1392,20 @@ public class QuickActivity extends AppCompatActivity {
                                         startActivity(returnBtn);
                                     }
                                 }).create().show();
+                    }else{
+                        checaCerto(quick, 0, button0);
+                        checaCerto(quick, 1, button1);
+                        checaCerto(quick, 2, button2);
+                        checaCerto(quick, 3, button3);
+                        checaCerto(quick, 4, button4);
+                        checaCerto(quick, 5, button5);
+                        checaCerto(quick, 6, button6);
+                        checaCerto(quick, 7, button7);
+                        checaCerto(quick, 8, button8);
+                        checaCerto(quick, 9, button9);
                     }
 
-                        switch (quick.getTrocados().get(0).getPivo()){
-                            case 0:
-                                button0.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 0;
-                                break;
-                            case 1:
-                                button1.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 1;
-                                break;
-                            case 2:
-                                button2.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 2;
-                                break;
-                            case 3:
-                                button3.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 3;
-                                break;
-                            case 4:
-                                button4.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 4;
-                                break;
-                            case 5:
-                                button5.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 5;
-                                break;
-                            case 6:
-                                button6.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 6;
-                                break;
-                            case 7:
-                                button7.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 7;
-                                break;
-                            case 8:
-                                button8.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 8;
-                                break;
-                            case 9:
-                                button9.setBackgroundResource(R.color.Orange);
-                                pivoAtual[0] = 9;
-                                break;
-                        }
+
 
                 }
             }
@@ -1689,5 +1416,26 @@ public class QuickActivity extends AppCompatActivity {
         Intent intent = new Intent(QuickActivity.this, Choices.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    public void checaCerto(QuickSort quick, int id, Button button){
+        boolean flag = false;
+        if(quick.getVet()[id] == Integer.parseInt((String)button.getText())){
+            for(int i = id+1; i< quick.getTrocados().size()-1; i++){
+                if(quick.getTrocados().get(i).getTrocado1() == id || quick.getTrocados().get(i).getTrocado1() == id){
+                    flag=true;
+                }
+            }
+            if(!flag){
+                button.setBackgroundResource(R.color.Green);
+            }else {
+                button.setBackgroundResource(R.color.LightBlue);
+            }
+        }else{
+            button.setBackgroundResource(R.color.LightBlue);
+        }
+        if(quick.getTrocados().get(0).getPivo() == id){
+            button.setBackgroundResource(R.color.Orange);
+        }
     }
 }

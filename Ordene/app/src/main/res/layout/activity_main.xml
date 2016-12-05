@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/sair"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_below="@+id/insertion"
+        android:layout_below="@+id/inst"
         android:layout_marginBottom="30dp"
         android:layout_marginTop="30dp"
         android:fontFamily="casual"
@@ -52,10 +52,10 @@
         android:textStyle="normal|bold" />
 
     <Button
-        android:text="Intruçoes"
+        android:text="Intruções"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/insertion"
+        android:id="@+id/inst"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_below="@+id/bubble"
         android:layout_alignParentLeft="true"
