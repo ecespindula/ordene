@@ -3,15 +3,17 @@ package go.erick.ordene;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class InsertionActivity extends AppCompatActivity {
-
+    CountDownTimer cTimer = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class InsertionActivity extends AppCompatActivity {
         final Button button7 = (Button) findViewById (R.id.button7);
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
+        final TextView timer = (TextView) findViewById(R.id.textTimer);
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
         button0.setText(Integer.toString(numero));
@@ -75,6 +78,7 @@ public class InsertionActivity extends AppCompatActivity {
         checaCerto(insertion, 7, button7);
         checaCerto(insertion, 8, button8);
         checaCerto(insertion, 9, button9);
+        startTimer(timer);
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +89,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=0 && insertion.getTrocados().get(0).getTrocado2() !=0){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -99,6 +104,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -165,6 +171,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button0.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -192,6 +199,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=1 && insertion.getTrocados().get(0).getTrocado2() !=1){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -207,6 +215,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -274,6 +283,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button1.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -301,6 +311,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=2 && insertion.getTrocados().get(0).getTrocado2() !=2){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -315,6 +326,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -381,6 +393,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button2.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -408,6 +421,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=3 && insertion.getTrocados().get(0).getTrocado2() !=3){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -422,6 +436,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -488,6 +503,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button3.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -515,6 +531,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=4 && insertion.getTrocados().get(0).getTrocado2() !=4){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -529,6 +546,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -595,6 +613,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button4.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -622,6 +641,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=5 && insertion.getTrocados().get(0).getTrocado2() !=5){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -702,6 +722,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button5.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -729,6 +750,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=6 && insertion.getTrocados().get(0).getTrocado2() !=6){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -743,6 +765,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -809,6 +832,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button6.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -836,6 +860,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=7 && insertion.getTrocados().get(0).getTrocado2() !=7){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -850,6 +875,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -916,6 +942,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button7.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -943,6 +970,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=8 && insertion.getTrocados().get(0).getTrocado2() !=8){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -957,6 +985,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1023,6 +1052,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button8.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -1050,6 +1080,7 @@ public class InsertionActivity extends AppCompatActivity {
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=9 && insertion.getTrocados().get(0).getTrocado2() !=9){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1064,6 +1095,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1130,6 +1162,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button9.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -1163,7 +1196,7 @@ public class InsertionActivity extends AppCompatActivity {
     public void checaCerto(InsertionSort insertion, int id, Button button){
         boolean flag = false;
         if(insertion.getVet()[id] == Integer.parseInt((String)button.getText())){
-            for(int i = id+1; i< insertion.getTrocados().size()-1; i++){
+            for(int i = 0; i< insertion.getTrocados().size()-1; i++){
                 if(insertion.getTrocados().get(i).getTrocado1() == id || insertion.getTrocados().get(i).getTrocado1() == id){
                     flag=true;
                 }
@@ -1176,6 +1209,37 @@ public class InsertionActivity extends AppCompatActivity {
         }else{
             button.setBackgroundResource(R.color.LightBlue);
         }
+    }
+
+    //start timer function
+    void startTimer(final TextView mTextField) {
+        cTimer = new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                mTextField.setText("TIMEOUT!");
+                new AlertDialog.Builder(InsertionActivity.this)
+                        .setTitle("GAME OVER")
+                        .setMessage("Acabou o tempo!")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent returnBtn = new Intent(getApplicationContext(),
+                                        MainActivity.class);
+
+                                startActivity(returnBtn);
+                            }
+                        }).create().show();
+            }
+        };
+        cTimer.start();
+    }
+
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
     }
 
 

@@ -147,7 +147,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:text="Quicksort"
+        android:text="Quick sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -159,6 +159,26 @@
         android:textColor="@color/Orange"
         android:textAllCaps="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/timer"
+        android:id="@+id/imageView5"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="00"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textTimer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textStyle="normal|bold"
+        android:textSize="75sp"
+        android:layout_marginBottom="53dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

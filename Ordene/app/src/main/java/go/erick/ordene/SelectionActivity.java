@@ -3,15 +3,17 @@ package go.erick.ordene;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Random;
 
 public class SelectionActivity extends AppCompatActivity {
-
+    CountDownTimer cTimer = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class SelectionActivity extends AppCompatActivity {
         final Button button7 = (Button) findViewById (R.id.button7);
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
+        final TextView timer = (TextView) findViewById(R.id.textTimer);
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
         button0.setText(Integer.toString(numero));
@@ -67,6 +70,7 @@ public class SelectionActivity extends AppCompatActivity {
         for(i = 0; i < selection.getTrocados().size();i++) {
             System.out.println(selection.getTrocados().get(i).getTrocado1()+" "+selection.getTrocados().get(i).getTrocado2());
         }
+        startTimer(timer);
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +82,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=0 && selection.getTrocados().get(0).getTrocado2() !=0){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -92,6 +97,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -169,6 +175,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button0.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -197,6 +204,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=1 && selection.getTrocados().get(0).getTrocado2() !=1){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -212,6 +220,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -290,6 +299,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button1.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -318,6 +328,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=2 && selection.getTrocados().get(0).getTrocado2() !=2){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -332,6 +343,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -409,6 +421,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button2.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -437,6 +450,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=3 && selection.getTrocados().get(0).getTrocado2() !=3){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -451,6 +465,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -528,6 +543,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button3.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -556,6 +572,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=4 && selection.getTrocados().get(0).getTrocado2() !=4){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -570,6 +587,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -647,6 +665,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button4.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -675,6 +694,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=5 && selection.getTrocados().get(0).getTrocado2() !=5){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -689,6 +709,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -766,6 +787,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button5.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -794,6 +816,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=6 && selection.getTrocados().get(0).getTrocado2() !=6){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -808,6 +831,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -885,6 +909,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button6.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -913,6 +938,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=7 && selection.getTrocados().get(0).getTrocado2() !=7){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -927,6 +953,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1004,6 +1031,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button7.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -1032,6 +1060,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=8 && selection.getTrocados().get(0).getTrocado2() !=8){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1046,6 +1075,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1123,6 +1153,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button8.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -1151,6 +1182,7 @@ public class SelectionActivity extends AppCompatActivity {
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
                     if(selection.getTrocados().get(0).getTrocado1()!=9 && selection.getTrocados().get(0).getTrocado2() !=9){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1165,6 +1197,7 @@ public class SelectionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(selection.getTrocados().get(0).getTrocado1() != bot && selection.getTrocados().get(0).getTrocado2() != bot){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -1242,6 +1275,7 @@ public class SelectionActivity extends AppCompatActivity {
                     button9.setClickable(true);
                     troca.reseta();
                     if(selection.getTrocados().isEmpty()){
+                        cancelTimer();
                         new AlertDialog.Builder(SelectionActivity.this)
                                 .setTitle("PARABENS")
                                 .setMessage("Voce acertou o algoritmo")
@@ -1265,6 +1299,37 @@ public class SelectionActivity extends AppCompatActivity {
         Intent intent = new Intent(SelectionActivity.this, Choices.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    //start timer function
+    void startTimer(final TextView mTextField) {
+        cTimer = new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                mTextField.setText("TIMEOUT!");
+                new AlertDialog.Builder(SelectionActivity.this)
+                        .setTitle("GAME OVER")
+                        .setMessage("Acabou o tempo!")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent returnBtn = new Intent(getApplicationContext(),
+                                        MainActivity.class);
+
+                                startActivity(returnBtn);
+                            }
+                        }).create().show();
+            }
+        };
+        cTimer.start();
+    }
+
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
     }
 
 }

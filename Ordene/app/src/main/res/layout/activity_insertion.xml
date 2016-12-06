@@ -29,7 +29,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:text="Insertionsort"
+        android:text="Insertion sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -160,15 +160,24 @@
         android:id="@+id/button9"
         android:background="@android:color/holo_blue_bright"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/timer"
+        android:id="@+id/imageView5"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
     <TextView
+        android:text="00"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/button5"
-        android:layout_marginTop="65dp"
-        android:id="@+id/instrucaoBubble"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Instruçoes: \n1)Percorra o vetor da esquerda para a direita a partir da primeira posição; \n2)Se o valor da posição atual for menor que o da esquerda, troque; \n3)Continue comparando o valor trocado com os valores a esquerda, trocando se for menor; \n4)Chegando na última posição, o vetor já deve estar ordenado."
-        app:srcCompat="@drawable/insertion" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textTimer"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:textStyle="normal|bold"
+        android:textSize="75sp"
+        android:layout_marginBottom="53dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
