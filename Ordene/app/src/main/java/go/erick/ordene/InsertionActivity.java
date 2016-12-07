@@ -1197,7 +1197,7 @@ public class InsertionActivity extends AppCompatActivity {
         boolean flag = false;
         if(insertion.getVet()[id] == Integer.parseInt((String)button.getText())){
             for(int i = 0; i< insertion.getTrocados().size()-1; i++){
-                if(insertion.getTrocados().get(i).getTrocado1() == id || insertion.getTrocados().get(i).getTrocado1() == id){
+                if(insertion.getTrocados().get(i).getTrocado1() == id || insertion.getTrocados().get(i).getTrocado2() == id){
                     flag=true;
                 }
             }

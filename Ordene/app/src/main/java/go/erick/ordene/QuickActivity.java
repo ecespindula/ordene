@@ -1455,7 +1455,7 @@ public class QuickActivity extends AppCompatActivity {
         boolean flag = false;
         if(quick.getVet()[id] == Integer.parseInt((String)button.getText())){
             for(int i = 0; i< quick.getTrocados().size()-1; i++){
-                if(quick.getTrocados().get(i).getTrocado1() == id || quick.getTrocados().get(i).getTrocado1() == id){
+                if(quick.getTrocados().get(i).getTrocado1() == id || quick.getTrocados().get(i).getTrocado2() == id){
                     flag=true;
                 }
             }
