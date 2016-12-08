@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -34,6 +35,7 @@ public class BubbleActivity extends AppCompatActivity {
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
         final TextView timer = (TextView) findViewById(R.id.textTimer);
+        final ImageView dica =  (ImageView) findViewById(R.id.dica);
         mp = MediaPlayer.create(BubbleActivity.this, R.raw.click);
         victory = MediaPlayer.create(BubbleActivity.this, R.raw.victory);
         defeat = MediaPlayer.create(BubbleActivity.this, R.raw.defeat);
@@ -85,6 +87,76 @@ public class BubbleActivity extends AppCompatActivity {
         checaCerto(bubble, 9, button9);
 
         startTimer(timer);
+
+        dica.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                switch (bubble.getTrocados().get(0).getTrocado1()){
+                    case 0:
+                        button0.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 1:
+                        button1.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 2:
+                        button2.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 3:
+                        button3.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 4:
+                        button4.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 5:
+                        button5.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 6:
+                        button6.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 7:
+                        button7.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 8:
+                        button8.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 9:
+                        button9.setBackgroundResource(R.color.colorAccent);
+                        break;
+                }
+
+                switch (bubble.getTrocados().get(0).getTrocado2()){
+                    case 0:
+                        button0.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 1:
+                        button1.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 2:
+                        button2.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 3:
+                        button3.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 4:
+                        button4.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 5:
+                        button5.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 6:
+                        button6.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 7:
+                        button7.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 8:
+                        button8.setBackgroundResource(R.color.colorAccent);
+                        break;
+                    case 9:
+                        button9.setBackgroundResource(R.color.colorAccent);
+                        break;
+                }
+            }
+        });
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
