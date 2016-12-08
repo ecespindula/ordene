@@ -17,8 +17,10 @@
         "5)Caso chegue ao fim sem realizar um troca, o vetor então está ordenado."
         "\n\nInsertion Sort:\n"
         "1)Percorra o vetor da esquerda para a direita a partir da primeira posição; \n2)Se o valor da posição atual for menor que o da esquerda, troque; \n3)Continue comparando o valor trocado com os valores a esquerda, trocando se for menor; \n4)Chegando na última posição, o vetor já deve estar ordenado."
-        "\n\nSelection Sort:/'
+        "\n\nSelection Sort:'
         "\n1)Encontre o menor valor do vetor; \n2)Troque-o com o primeiro valor do vetor; \n3)Agora procure o próximo menor valor e troque-o com o da segunda posição; \n4)Continue sucessivamente ate que o vetor esteja ordenado."
+        "\n\nQuickSort:\n"
+        "1)Pivô = botão laranja; \n2)Compare os botões a partir do pivô com o mesmo; 
     </string>
     <string name="action_settings">Settings</string>
 </resources>

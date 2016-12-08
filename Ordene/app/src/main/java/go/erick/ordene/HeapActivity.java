@@ -2,6 +2,7 @@ package go.erick.ordene;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,8 @@ import java.util.Random;
 
 public class HeapActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
+    MediaPlayer mp, defeat, victory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,10 @@ public class HeapActivity extends AppCompatActivity {
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
         final TextView timer = (TextView) findViewById(R.id.textTimer);
+        mp = MediaPlayer.create(HeapActivity.this, R.raw.click);
+        victory = MediaPlayer.create(HeapActivity.this, R.raw.victory);
+        defeat = MediaPlayer.create(HeapActivity.this, R.raw.defeat);
+
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
         button0.setText(Integer.toString(numero));
@@ -79,6 +86,7 @@ public class HeapActivity extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 int cor;
                 button0.setBackgroundResource(R.color.Red);
                 button0.setClickable(false);
@@ -86,6 +94,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=0 && heap.getTrocados().get(0).getTrocado2() !=0){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -101,6 +110,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -173,6 +183,7 @@ public class HeapActivity extends AppCompatActivity {
                     button0.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -195,6 +206,7 @@ public class HeapActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 int cor;
                 button1.setBackgroundResource(R.color.Red);
                 button1.setClickable(false);
@@ -202,6 +214,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=1 && heap.getTrocados().get(0).getTrocado2() !=1){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -218,6 +231,7 @@ public class HeapActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -291,6 +305,7 @@ public class HeapActivity extends AppCompatActivity {
                     button1.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -313,6 +328,7 @@ public class HeapActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button2.setBackgroundResource(R.color.Red);
                 int cor;
                 button2.setClickable(false);
@@ -320,6 +336,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=2 && heap.getTrocados().get(0).getTrocado2() !=2){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -335,6 +352,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -407,6 +425,7 @@ public class HeapActivity extends AppCompatActivity {
                     button2.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -429,6 +448,7 @@ public class HeapActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button3.setBackgroundResource(R.color.Red);
                 int cor;
                 button3.setClickable(false);
@@ -436,6 +456,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=3 && heap.getTrocados().get(0).getTrocado2() !=3){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -451,6 +472,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -523,6 +545,7 @@ public class HeapActivity extends AppCompatActivity {
                     button3.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -545,6 +568,7 @@ public class HeapActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button4.setBackgroundResource(R.color.Red);
                 int cor;
                 button4.setClickable(false);
@@ -552,6 +576,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=4 && heap.getTrocados().get(0).getTrocado2() !=4){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -567,6 +592,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -639,6 +665,7 @@ public class HeapActivity extends AppCompatActivity {
                     button4.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -661,6 +688,7 @@ public class HeapActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button5.setBackgroundResource(R.color.Red);
                 int cor;
                 button5.setClickable(false);
@@ -668,6 +696,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=5 && heap.getTrocados().get(0).getTrocado2() !=5){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -683,6 +712,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -755,6 +785,7 @@ public class HeapActivity extends AppCompatActivity {
                     button5.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -777,6 +808,7 @@ public class HeapActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button6.setBackgroundResource(R.color.Red);
                 int cor;
                 button6.setClickable(false);
@@ -784,6 +816,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=6 && heap.getTrocados().get(0).getTrocado2() !=6){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -799,6 +832,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -871,6 +905,7 @@ public class HeapActivity extends AppCompatActivity {
                     button6.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -893,6 +928,7 @@ public class HeapActivity extends AppCompatActivity {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button7.setBackgroundResource(R.color.Red);
                 int cor;
                 button7.setClickable(false);
@@ -900,6 +936,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=7 && heap.getTrocados().get(0).getTrocado2() !=7){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -915,6 +952,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -987,6 +1025,7 @@ public class HeapActivity extends AppCompatActivity {
                     button7.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -1009,6 +1048,7 @@ public class HeapActivity extends AppCompatActivity {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button8.setBackgroundResource(R.color.Red);
                 int cor;
                 button8.setClickable(false);
@@ -1016,6 +1056,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=8 && heap.getTrocados().get(0).getTrocado2() !=8){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -1031,6 +1072,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -1103,6 +1145,7 @@ public class HeapActivity extends AppCompatActivity {
                     button8.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")
@@ -1125,6 +1168,7 @@ public class HeapActivity extends AppCompatActivity {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button9.setBackgroundResource(R.color.Red);
                 int cor;
                 button9.setClickable(false);
@@ -1132,6 +1176,7 @@ public class HeapActivity extends AppCompatActivity {
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
                     if(heap.getTrocados().get(0).getTrocado1()!=9 && heap.getTrocados().get(0).getTrocado2() !=9){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -1147,6 +1192,7 @@ public class HeapActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(heap.getTrocados().get(0).getTrocado1() != bot && heap.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("GAME OVER")
@@ -1219,6 +1265,7 @@ public class HeapActivity extends AppCompatActivity {
                     button9.setClickable(true);
                     troca.reseta();
                     if(heap.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(HeapActivity.this)
                                 .setTitle("PARABENS")

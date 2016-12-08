@@ -1,13 +1,14 @@
 package go.erick.ordene;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class Choices extends AppCompatActivity {
-
+    MediaPlayer mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,10 +19,12 @@ public class Choices extends AppCompatActivity {
         Button quick = (Button) findViewById (R.id.quick);
         Button heap = (Button) findViewById (R.id.heap);
         Button voltar = (Button) findViewById (R.id.voltar);
+        mp = MediaPlayer.create(Choices.this, R.raw.click);
 
         bubble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, BubbleActivity.class);
                 startActivity(intent);
             }
@@ -30,6 +33,7 @@ public class Choices extends AppCompatActivity {
         insertion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, InsertionActivity.class);
                 startActivity(intent);
             }
@@ -38,6 +42,7 @@ public class Choices extends AppCompatActivity {
         selection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, SelectionActivity.class);
                 startActivity(intent);
             }
@@ -46,6 +51,7 @@ public class Choices extends AppCompatActivity {
         quick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, QuickActivity.class);
                 startActivity(intent);
             }
@@ -54,6 +60,7 @@ public class Choices extends AppCompatActivity {
         heap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, HeapActivity.class);
                 startActivity(intent);
             }
@@ -62,6 +69,7 @@ public class Choices extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 Intent intent = new Intent(Choices.this, MainActivity.class);
                 startActivity(intent);
             }

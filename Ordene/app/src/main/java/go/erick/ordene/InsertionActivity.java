@@ -2,6 +2,7 @@ package go.erick.ordene;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +15,7 @@ import java.util.Random;
 
 public class InsertionActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
+    MediaPlayer mp, defeat, victory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,10 @@ public class InsertionActivity extends AppCompatActivity {
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
         final TextView timer = (TextView) findViewById(R.id.textTimer);
+        mp = MediaPlayer.create(InsertionActivity.this, R.raw.click);
+        victory = MediaPlayer.create(InsertionActivity.this, R.raw.victory);
+        defeat = MediaPlayer.create(InsertionActivity.this, R.raw.defeat);
+
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
         button0.setText(Integer.toString(numero));
@@ -83,12 +89,14 @@ public class InsertionActivity extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button0.setBackgroundResource(R.color.Red);
                 button0.setClickable(false);
                 if(troca.insere(0)){
                     String texto = (String) button0.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=0 && insertion.getTrocados().get(0).getTrocado2() !=0){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -104,6 +112,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -171,6 +180,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button0.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -193,12 +203,14 @@ public class InsertionActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button1.setBackgroundResource(R.color.Red);
                 button1.setClickable(false);
                 if(troca.insere(1)){
                     String texto = (String) button1.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=1 && insertion.getTrocados().get(0).getTrocado2() !=1){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -215,6 +227,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 }).create().show();
 
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -283,6 +296,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button1.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -305,12 +319,14 @@ public class InsertionActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button2.setBackgroundResource(R.color.Red);
                 button2.setClickable(false);
                 if(troca.insere(2)){
                     String texto = (String) button2.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=2 && insertion.getTrocados().get(0).getTrocado2() !=2){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -326,6 +342,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -393,6 +410,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button2.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -415,12 +433,14 @@ public class InsertionActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button3.setBackgroundResource(R.color.Red);
                 button3.setClickable(false);
                 if(troca.insere(3)){
                     String texto = (String) button3.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=3 && insertion.getTrocados().get(0).getTrocado2() !=3){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -436,6 +456,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -503,6 +524,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button3.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -525,12 +547,14 @@ public class InsertionActivity extends AppCompatActivity {
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button4.setBackgroundResource(R.color.Red);
                 button4.setClickable(false);
                 if(troca.insere(4)){
                     String texto = (String) button4.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=4 && insertion.getTrocados().get(0).getTrocado2() !=4){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -546,6 +570,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -613,6 +638,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button4.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -635,12 +661,14 @@ public class InsertionActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button5.setBackgroundResource(R.color.Red);
                 button5.setClickable(false);
                 if(troca.insere(5)){
                     String texto = (String) button5.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=5 && insertion.getTrocados().get(0).getTrocado2() !=5){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -656,6 +684,8 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
+                        cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
                                 .setMessage("Voce errou o algoritmo")
@@ -722,6 +752,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button5.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -744,12 +775,14 @@ public class InsertionActivity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button6.setBackgroundResource(R.color.Red);
                 button6.setClickable(false);
                 if(troca.insere(6)){
                     String texto = (String) button6.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=6 && insertion.getTrocados().get(0).getTrocado2() !=6){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -765,6 +798,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -832,6 +866,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button6.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -854,12 +889,14 @@ public class InsertionActivity extends AppCompatActivity {
         button7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button7.setBackgroundResource(R.color.Red);
                 button7.setClickable(false);
                 if(troca.insere(7)){
                     String texto = (String) button7.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=7 && insertion.getTrocados().get(0).getTrocado2() !=7){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -875,6 +912,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -942,6 +980,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button7.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -964,12 +1003,14 @@ public class InsertionActivity extends AppCompatActivity {
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button8.setBackgroundResource(R.color.Red);
                 button8.setClickable(false);
                 if(troca.insere(8)){
                     String texto = (String) button8.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=8 && insertion.getTrocados().get(0).getTrocado2() !=8){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -985,6 +1026,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -1052,6 +1094,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button8.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
@@ -1074,12 +1117,14 @@ public class InsertionActivity extends AppCompatActivity {
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mp.start();
                 button9.setBackgroundResource(R.color.Red);
                 button9.setClickable(false);
                 if(troca.insere(9)){
                     String texto = (String) button9.getText();
                     int bot = troca.getTroca1();
                     if(insertion.getTrocados().get(0).getTrocado1()!=9 && insertion.getTrocados().get(0).getTrocado2() !=9){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -1095,6 +1140,7 @@ public class InsertionActivity extends AppCompatActivity {
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
+                        defeat.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("GAME OVER")
@@ -1162,6 +1208,7 @@ public class InsertionActivity extends AppCompatActivity {
                     button9.setClickable(true);
                     troca.reseta();
                     if(insertion.getTrocados().isEmpty()){
+                        victory.start();
                         cancelTimer();
                         new AlertDialog.Builder(InsertionActivity.this)
                                 .setTitle("PARABENS")
