@@ -181,12 +181,15 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_search_category_default"
-        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/ajuda"
+        android:id="@+id/dica"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/textView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/dica" />
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4"
+        android:layout_width="wrap_content" />
 
 </RelativeLayout>

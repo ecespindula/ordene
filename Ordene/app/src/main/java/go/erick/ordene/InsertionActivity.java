@@ -9,13 +9,20 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.Random;
 
 public class InsertionActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     MediaPlayer mp, defeat, victory;
+    InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +31,7 @@ public class InsertionActivity extends AppCompatActivity {
 
         final Troca troca = new Troca();
         int[] lista = new int[10];
+        final int[] limiteDica = {3};
         final Button button0 = (Button) findViewById (R.id.button0);
         final Button button1 = (Button) findViewById (R.id.button1);
         final Button button2 = (Button) findViewById (R.id.button2);
@@ -35,9 +43,25 @@ public class InsertionActivity extends AppCompatActivity {
         final Button button8 = (Button) findViewById (R.id.button8);
         final Button button9 = (Button) findViewById (R.id.button9);
         final TextView timer = (TextView) findViewById(R.id.textTimer);
+        final ImageView dica =  (ImageView) findViewById(R.id.dica);
+
         mp = MediaPlayer.create(InsertionActivity.this, R.raw.click);
         victory = MediaPlayer.create(InsertionActivity.this, R.raw.victory);
         defeat = MediaPlayer.create(InsertionActivity.this, R.raw.defeat);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-4577339383482486/2050477450");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                Intent returnBtn = new Intent(getApplicationContext(),
+                        MainActivity.class);
+
+                startActivity(returnBtn);
+            }
+        });
 
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
@@ -84,7 +108,105 @@ public class InsertionActivity extends AppCompatActivity {
         checaCerto(insertion, 7, button7);
         checaCerto(insertion, 8, button8);
         checaCerto(insertion, 9, button9);
-        startTimer(timer);
+        startTimer(timer, 40000);
+
+        dica.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                if(limiteDica[0] >0) {
+                    limiteDica[0]--;
+                    mp.start();
+                    switch (insertion.getTrocados().get(0).getTrocado1()) {
+                        case 0:
+                            if (troca.getTroca1() != 0)
+                                button0.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 1:
+                            if (troca.getTroca1() != 1)
+                                button1.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 2:
+                            if (troca.getTroca1() != 2)
+                                button2.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 3:
+                            if (troca.getTroca1() != 3)
+                                button3.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 4:
+                            if (troca.getTroca1() != 4)
+                                button4.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 5:
+                            if (troca.getTroca1() != 5)
+                                button5.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 6:
+                            if (troca.getTroca1() != 6)
+                                button6.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 7:
+                            if (troca.getTroca1() != 7)
+                                button7.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 8:
+                            if (troca.getTroca1() != 8)
+                                button8.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 9:
+                            if (troca.getTroca1() != 9)
+                                button9.setBackgroundResource(R.color.colorAccent);
+                            break;
+                    }
+
+                    switch (insertion.getTrocados().get(0).getTrocado2()) {
+                        case 0:
+                            if (troca.getTroca1() != 0)
+                                button0.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 1:
+                            if (troca.getTroca1() != 1)
+                                button1.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 2:
+                            if (troca.getTroca1() != 2)
+                                button2.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 3:
+                            if (troca.getTroca1() != 3)
+                                button3.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 4:
+                            if (troca.getTroca1() != 4)
+                                button4.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 5:
+                            if (troca.getTroca1() != 5)
+                                button5.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 6:
+                            if (troca.getTroca1() != 6)
+                                button6.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 7:
+                            if (troca.getTroca1() != 7)
+                                button7.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 8:
+                            if (troca.getTroca1() != 8)
+                                button8.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 9:
+                            if (troca.getTroca1() != 9)
+                                button9.setBackgroundResource(R.color.colorAccent);
+                            break;
+                    }
+                    if(limiteDica[0] == 0) {
+                        dica.setImageResource(R.drawable.sajuda);
+                        dica.setClickable(false);
+                    }
+                }
+            }
+        });
 
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,10 +227,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -121,10 +240,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -189,10 +305,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -219,10 +332,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
 
@@ -236,10 +346,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
 
@@ -305,10 +412,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -335,10 +439,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -351,10 +452,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -419,10 +517,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -449,10 +544,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -465,10 +557,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -533,10 +622,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -563,10 +649,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -579,10 +662,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -647,10 +727,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -677,10 +754,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -693,10 +767,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -761,10 +832,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -791,10 +859,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -807,10 +872,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -875,10 +937,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -905,10 +964,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -921,10 +977,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -989,10 +1042,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1019,10 +1069,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -1035,10 +1082,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1103,10 +1147,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1133,10 +1174,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(insertion.getTrocados().get(0).getTrocado1() != bot && insertion.getTrocados().get(0).getTrocado2() != bot){
@@ -1149,10 +1187,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1217,10 +1252,7 @@ public class InsertionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1259,13 +1291,13 @@ public class InsertionActivity extends AppCompatActivity {
     }
 
     //start timer function
-    void startTimer(final TextView mTextField) {
-        cTimer = new CountDownTimer(60000, 1000) {
+    void startTimer(final TextView mTextField, int time) {
+        cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                mTextField.setText("TIMEOUT!");
+                // mTextField.setText("TIMEOUT!");
                 new AlertDialog.Builder(InsertionActivity.this)
                         .setTitle("GAME OVER")
                         .setMessage("Acabou o tempo!")
@@ -1273,21 +1305,28 @@ public class InsertionActivity extends AppCompatActivity {
                         .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent returnBtn = new Intent(getApplicationContext(),
-                                        MainActivity.class);
-
-                                startActivity(returnBtn);
+                                mInterstitialAd.show();
                             }
                         }).create().show();
+
+
             }
         };
         cTimer.start();
     }
 
-    void cancelTimer() {
-        if(cTimer!=null)
-            cTimer.cancel();
-    }
+            void cancelTimer() {
+                if(cTimer!=null)
+                    cTimer.cancel();
+            }
+
+            private void requestNewInterstitial() {
+                AdRequest adRequest = new AdRequest.Builder()
+                        .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                        .build();
+
+                mInterstitialAd.loadAd(adRequest);
+            }
 
 
 }

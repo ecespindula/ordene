@@ -7,23 +7,28 @@ import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer mp;
+    //MediaPlayer mp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         Button iniciar = (Button) findViewById (R.id.bubble);
         Button sair = (Button) findViewById (R.id.sair);
         Button inst = (Button) findViewById(R.id.inst);
-        mp = MediaPlayer.create(MainActivity.this, R.raw.click);
+        //mp = MediaPlayer.create(MainActivity.this, R.raw.click);
 
         iniciar.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.start();
+                //mp.start();
                 Intent intent = new Intent(MainActivity.this, Choices.class);
                 startActivity(intent);
             }
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         sair.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.start();
+                //mp.start();
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_HOME);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         inst.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                mp.start();
+                //mp.start();
                 Intent intent = new Intent(MainActivity.this, ScrollingActivity.class);
                 startActivity(intent);
             }

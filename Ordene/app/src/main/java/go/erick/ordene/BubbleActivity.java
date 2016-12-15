@@ -12,18 +12,27 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+
+import java.sql.Time;
 import java.util.Random;
 
 public class BubbleActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     MediaPlayer mp, victory, defeat;
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bubble);
+
         final Troca troca = new Troca();
         int[] lista = new int[10];
+        final int[] limiteDica = {3};
         final Button button0 = (Button) findViewById (R.id.button0);
         final Button button1 = (Button) findViewById (R.id.button1);
         final Button button2 = (Button) findViewById (R.id.button2);
@@ -39,6 +48,21 @@ public class BubbleActivity extends AppCompatActivity {
         mp = MediaPlayer.create(BubbleActivity.this, R.raw.click);
         victory = MediaPlayer.create(BubbleActivity.this, R.raw.victory);
         defeat = MediaPlayer.create(BubbleActivity.this, R.raw.defeat);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-4577339383482486/7377157457");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                Intent returnBtn = new Intent(getApplicationContext(),
+                        MainActivity.class);
+
+                startActivity(returnBtn);
+            }
+        });
+        requestNewInterstitial();
 
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
@@ -86,74 +110,102 @@ public class BubbleActivity extends AppCompatActivity {
         checaCerto(bubble, 8, button8);
         checaCerto(bubble, 9, button9);
 
-        startTimer(timer);
+        //startTimer(timer, 35000);
 
         dica.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
-                switch (bubble.getTrocados().get(0).getTrocado1()){
-                    case 0:
-                        button0.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 1:
-                        button1.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 2:
-                        button2.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 3:
-                        button3.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 4:
-                        button4.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 5:
-                        button5.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 6:
-                        button6.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 7:
-                        button7.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 8:
-                        button8.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 9:
-                        button9.setBackgroundResource(R.color.colorAccent);
-                        break;
-                }
+                if(limiteDica[0] >0) {
+                    limiteDica[0]--;
+                    mp.start();
+                    switch (bubble.getTrocados().get(0).getTrocado1()) {
+                        case 0:
+                            if (troca.getTroca1() != 0)
+                                button0.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 1:
+                            if (troca.getTroca1() != 1)
+                                button1.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 2:
+                            if (troca.getTroca1() != 2)
+                                button2.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 3:
+                            if (troca.getTroca1() != 3)
+                                button3.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 4:
+                            if (troca.getTroca1() != 4)
+                                button4.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 5:
+                            if (troca.getTroca1() != 5)
+                                button5.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 6:
+                            if (troca.getTroca1() != 6)
+                                button6.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 7:
+                            if (troca.getTroca1() != 7)
+                                button7.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 8:
+                            if (troca.getTroca1() != 8)
+                                button8.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 9:
+                            if (troca.getTroca1() != 9)
+                                button9.setBackgroundResource(R.color.colorAccent);
+                            break;
+                    }
 
-                switch (bubble.getTrocados().get(0).getTrocado2()){
-                    case 0:
-                        button0.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 1:
-                        button1.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 2:
-                        button2.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 3:
-                        button3.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 4:
-                        button4.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 5:
-                        button5.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 6:
-                        button6.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 7:
-                        button7.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 8:
-                        button8.setBackgroundResource(R.color.colorAccent);
-                        break;
-                    case 9:
-                        button9.setBackgroundResource(R.color.colorAccent);
-                        break;
+                    switch (bubble.getTrocados().get(0).getTrocado2()) {
+                        case 0:
+                            if (troca.getTroca1() != 0)
+                                button0.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 1:
+                            if (troca.getTroca1() != 1)
+                                button1.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 2:
+                            if (troca.getTroca1() != 2)
+                                button2.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 3:
+                            if (troca.getTroca1() != 3)
+                                button3.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 4:
+                            if (troca.getTroca1() != 4)
+                                button4.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 5:
+                            if (troca.getTroca1() != 5)
+                                button5.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 6:
+                            if (troca.getTroca1() != 6)
+                                button6.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 7:
+                            if (troca.getTroca1() != 7)
+                                button7.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 8:
+                            if (troca.getTroca1() != 8)
+                                button8.setBackgroundResource(R.color.colorAccent);
+                            break;
+                        case 9:
+                            if (troca.getTroca1() != 9)
+                                button9.setBackgroundResource(R.color.colorAccent);
+                            break;
+                    }
+                    if(limiteDica[0] == 0) {
+                        dica.setImageResource(R.drawable.sajuda);
+                        dica.setClickable(false);
+                    }
                 }
             }
         });
@@ -177,10 +229,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -193,10 +242,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -261,10 +307,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -291,10 +334,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
 
@@ -308,10 +348,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
 
@@ -377,10 +414,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -407,10 +441,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -423,10 +454,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -491,10 +519,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -521,10 +546,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -537,10 +559,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -605,10 +624,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -635,10 +651,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -651,10 +664,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -719,10 +729,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -749,10 +756,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -765,10 +769,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -833,10 +834,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -863,10 +861,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -879,10 +874,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -947,10 +939,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -977,10 +966,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -993,10 +979,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1061,10 +1044,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1091,10 +1071,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -1107,10 +1084,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1175,10 +1149,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1205,10 +1176,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }else if(bubble.getTrocados().get(0).getTrocado1() != bot && bubble.getTrocados().get(0).getTrocado2() != bot){
@@ -1221,10 +1189,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                MainActivity.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1289,10 +1254,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        Intent returnBtn = new Intent(getApplicationContext(),
-                                                Choices.class);
-
-                                        startActivity(returnBtn);
+                                        mInterstitialAd.show();
                                     }
                                 }).create().show();
                     }
@@ -1331,26 +1293,25 @@ public class BubbleActivity extends AppCompatActivity {
     }
 
     //start timer function
-    void startTimer(final TextView mTextField) {
-        cTimer = new CountDownTimer(60000, 1000) {
+    void startTimer(final TextView mTextField, int time) {
+        cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
             }
             public void onFinish() {
-                mTextField.setText("TIMEOUT!");
-                new AlertDialog.Builder(BubbleActivity.this)
-                        .setTitle("GAME OVER")
-                        .setMessage("Acabou o tempo!")
-                        .setCancelable(false)
-                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent returnBtn = new Intent(getApplicationContext(),
-                                        MainActivity.class);
+               // mTextField.setText("TIMEOUT!");
+                    new AlertDialog.Builder(BubbleActivity.this)
+                            .setTitle("GAME OVER")
+                            .setMessage("Acabou o tempo!")
+                            .setCancelable(false)
+                            .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mInterstitialAd.show();
+                                }
+                            }).create().show();
 
-                                startActivity(returnBtn);
-                            }
-                        }).create().show();
+
             }
         };
         cTimer.start();
@@ -1359,6 +1320,14 @@ public class BubbleActivity extends AppCompatActivity {
     void cancelTimer() {
         if(cTimer!=null)
             cTimer.cancel();
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+
+        mInterstitialAd.loadAd(adRequest);
     }
 
 }

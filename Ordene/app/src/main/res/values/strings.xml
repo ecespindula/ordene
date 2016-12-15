@@ -6,6 +6,7 @@
     <string name="title_activity_merge">MergeActivity</string>
     <string name="title_activity_heap">HeapActivity</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="banner_ad_unit_id">ca-app-pub-4577339383482486~7516758250</string>
     <string name="large_text">
         "Ordene! e um jogo de ordenação de números, onde a ordenação deve seguir as regras de um determinado algoritmo de ordenação.\n"
         "No jogo, selecione apenas os números que for trocar de posição, quando selecionar um número, ele ficara vermelho. Quando um número chegar em sua posição definitiva, ele ficará verde.\n\n"
@@ -23,4 +24,8 @@
         "1)Pivô = botão laranja; \n2)Compare os botões a partir do pivô com o mesmo; 
     </string>
     <string name="action_settings">Settings</string>
+
+    <string name="title_activity_fullscreen_bubble">FullscreenBubbleActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

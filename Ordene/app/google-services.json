@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "943749541253",
+    "firebase_url": "https://ordene-56b46.firebaseio.com",
+    "project_id": "ordene-56b46",
+    "storage_bucket": "ordene-56b46.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943749541253:android:4de4f50d0f146bbc",
+        "android_client_info": {
+          "package_name": "go.erick.ordene"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943749541253-5dsuod8a7pihq1h223n69t6ao04ei93q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbFnsLz-k3d-dOnV1faZYPqWvFYCVMj9Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

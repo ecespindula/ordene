@@ -1,16 +1,12 @@
 package go.erick.ordene;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.ads.InterstitialAd;
-
-public class Choices extends AppCompatActivity {
-    //MediaPlayer mp;
+public class ChoicesTutorial extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +25,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, BubbleActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, BubbleActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +34,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, InsertionActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, InsertionActivity.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +43,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, SelectionActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, SelectionActivity.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +52,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, QuickActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, QuickActivity.class);
                 startActivity(intent);
             }
         });
@@ -65,7 +61,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, HeapActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, HeapActivity.class);
                 startActivity(intent);
             }
         });
@@ -74,7 +70,7 @@ public class Choices extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(Choices.this, MainActivity.class);
+                Intent intent = new Intent(ChoicesTutorial.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +78,7 @@ public class Choices extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Choices.this, MainActivity.class);
+        Intent intent = new Intent(ChoicesTutorial.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
