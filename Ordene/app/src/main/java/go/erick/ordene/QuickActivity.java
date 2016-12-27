@@ -108,43 +108,73 @@ public class QuickActivity extends AppCompatActivity {
                     switch (troca.getTroca1()) {
                         case 0:
                             button0.setClickable(true);
-                            button0.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 0)
+                                button0.setBackgroundResource(R.color.Orange);
+                            else
+                                button0.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 1:
                             button1.setClickable(true);
-                            button1.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 1)
+                                button1.setBackgroundResource(R.color.Orange);
+                            else
+                                button1.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 2:
                             button2.setClickable(true);
-                            button2.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 2)
+                                button2.setBackgroundResource(R.color.Orange);
+                            else
+                                button2.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 3:
                             button3.setClickable(true);
-                            button3.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 3)
+                                button3.setBackgroundResource(R.color.Orange);
+                            else
+                                button3.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 4:
                             button4.setClickable(true);
-                            button4.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 4)
+                                button4.setBackgroundResource(R.color.Orange);
+                            else
+                                button4.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 5:
                             button5.setClickable(true);
-                            button5.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 5)
+                                button5.setBackgroundResource(R.color.Orange);
+                            else
+                                button5.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 6:
                             button6.setClickable(true);
-                            button6.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 6)
+                                button6.setBackgroundResource(R.color.Orange);
+                            else
+                                button6.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 7:
                             button7.setClickable(true);
-                            button7.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 7)
+                                button7.setBackgroundResource(R.color.Orange);
+                            else
+                                button7.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 8:
                             button8.setClickable(true);
-                            button8.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 8)
+                                button8.setBackgroundResource(R.color.Orange);
+                            else
+                                button8.setBackgroundResource(R.color.LightBlue);
                             break;
                         case 9:
                             button9.setClickable(true);
-                            button9.setBackgroundResource(R.color.LightBlue);
+                            if(quick.getTrocados().get(0).getPivo() == 9)
+                                button9.setBackgroundResource(R.color.Orange);
+                            else
+                                button9.setBackgroundResource(R.color.LightBlue);
                             break;
                     }
 
@@ -307,51 +337,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 1: button0.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 3: button0.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button0.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button0.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button0.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button0.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button0.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button0.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button0.setBackgroundResource(cor2);
-                    button0.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -441,51 +461,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 2: button1.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 3: button1.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button1.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button1.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button1.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button1.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button1.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button1.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button1.setBackgroundResource(cor2);
-                    button1.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -574,51 +584,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button2.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button2.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button2.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button2.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button2.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button2.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button2.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button2.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button2.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button2.setBackgroundResource(cor2);
-                    button2.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -705,51 +705,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button3.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button3.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 2: button3.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 4: button3.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button3.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button3.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button3.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button3.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button3.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button3.setBackgroundResource(cor2);
-                    button3.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -837,51 +827,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button4.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button4.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button4.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 2: button4.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 5: button4.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button4.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button4.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button4.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button4.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button4.setBackgroundResource(cor2);
-                    button4.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -969,51 +949,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button5.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button5.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button5.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button5.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 2: button5.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 6: button5.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button5.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button5.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button5.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button5.setBackgroundResource(cor2);
-                    button5.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -1101,51 +1071,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button6.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button6.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button6.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button6.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button6.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 2: button6.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 7: button6.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button6.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button6.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button6.setBackgroundResource(cor2);
-                    button6.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -1233,51 +1193,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button7.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button7.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button7.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button7.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button7.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button7.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 2: button7.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 8: button7.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 9: button7.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button7.setBackgroundResource(cor2);
-                    button7.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -1365,51 +1315,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button8.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button8.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button8.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button8.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button8.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button8.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button8.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 2: button8.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                         case 9: button8.setText(button9.getText());
                             button9.setText(texto);
                             button9.setBackgroundResource(cor);
-                            button9.setClickable(true);
                             break;
                     }
                     button8.setBackgroundResource(cor2);
-                    button8.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -1479,10 +1419,10 @@ public class QuickActivity extends AppCompatActivity {
                                 }).create().show();
                     }
                     if(quick.getTrocados().get(0).getPivo() == 9){
-                        cor = R.color.Green;
+                        cor = R.color.DarkGreen;
                         cor2 = R.color.LightBlue;
                     }else if(quick.getTrocados().get(0).getPivo() == bot){
-                        cor2 = R.color.Green;
+                        cor2 = R.color.DarkGreen;
                         cor = R.color.LightBlue;
                     }else{
                         cor = R.color.LightBlue;
@@ -1497,51 +1437,41 @@ public class QuickActivity extends AppCompatActivity {
                         case 0: button9.setText(button0.getText());
                             button0.setText(texto);
                             button0.setBackgroundResource(cor);
-                            button0.setClickable(true);
                             break;
                         case 1: button9.setText(button1.getText());
                             button1.setText(texto);
                             button1.setBackgroundResource(cor);
-                            button1.setClickable(true);
                             break;
                         case 3: button9.setText(button3.getText());
                             button3.setText(texto);
                             button3.setBackgroundResource(cor);
-                            button3.setClickable(true);
                             break;
                         case 4: button9.setText(button4.getText());
                             button4.setText(texto);
                             button4.setBackgroundResource(cor);
-                            button4.setClickable(true);
                             break;
                         case 5: button9.setText(button5.getText());
                             button5.setText(texto);
                             button5.setBackgroundResource(cor);
-                            button5.setClickable(true);
                             break;
                         case 6: button9.setText(button6.getText());
                             button6.setText(texto);
                             button6.setBackgroundResource(cor);
-                            button6.setClickable(true);
                             break;
                         case 7: button9.setText(button7.getText());
                             button7.setText(texto);
                             button7.setBackgroundResource(cor);
-                            button7.setClickable(true);
                             break;
                         case 8: button9.setText(button8.getText());
                             button8.setText(texto);
                             button8.setBackgroundResource(cor);
-                            button8.setClickable(true);
                             break;
                         case 2: button9.setText(button2.getText());
                             button2.setText(texto);
                             button2.setBackgroundResource(cor);
-                            button2.setClickable(true);
                             break;
                     }
                     button9.setBackgroundResource(cor2);
-                    button9.setClickable(true);
                     troca.reseta();
                     if(quick.getTrocados().isEmpty()){
                         victory.start();
@@ -1591,14 +1521,18 @@ public class QuickActivity extends AppCompatActivity {
                 }
             }
             if(!flag){
+                button.setClickable(false);
                 button.setBackgroundResource(R.color.Green);
             }else {
+                button.setClickable(true);
                 button.setBackgroundResource(R.color.LightBlue);
             }
         }else{
+            button.setClickable(true);
             button.setBackgroundResource(R.color.LightBlue);
         }
         if(quick.getTrocados().get(0).getPivo() == id){
+            button.setClickable(true);
             button.setBackgroundResource(R.color.Orange);
         }
     }
