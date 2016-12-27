@@ -179,4 +179,25 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        app:srcCompat="@drawable/ajuda"
+        android:id="@+id/dica"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4"
+        android:layout_width="wrap_content" />
+
+    <ImageView
+        android:layout_width="70dp"
+        app:srcCompat="@drawable/undo"
+        android:id="@+id/undo"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button9"
+        android:layout_alignStart="@+id/button9" />
+
 </RelativeLayout>

@@ -192,4 +192,13 @@
         android:layout_alignStart="@+id/button4"
         android:layout_width="wrap_content" />
 
+    <ImageView
+        android:layout_width="70dp"
+        app:srcCompat="@drawable/undo"
+        android:id="@+id/undo"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button9"
+        android:layout_alignStart="@+id/button9" />
+
 </RelativeLayout>

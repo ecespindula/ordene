@@ -45,6 +45,8 @@ public class BubbleActivity extends AppCompatActivity {
         final Button button9 = (Button) findViewById (R.id.button9);
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
+        final ImageView undo =  (ImageView) findViewById(R.id.undo);
+
         mp = MediaPlayer.create(BubbleActivity.this, R.raw.click);
         victory = MediaPlayer.create(BubbleActivity.this, R.raw.victory);
         defeat = MediaPlayer.create(BubbleActivity.this, R.raw.defeat);
@@ -57,7 +59,7 @@ public class BubbleActivity extends AppCompatActivity {
             public void onAdClosed() {
                 requestNewInterstitial();
                 Intent returnBtn = new Intent(getApplicationContext(),
-                        MainActivity.class);
+                        Choices.class);
 
                 startActivity(returnBtn);
             }
@@ -110,7 +112,59 @@ public class BubbleActivity extends AppCompatActivity {
         checaCerto(bubble, 8, button8);
         checaCerto(bubble, 9, button9);
 
-        //startTimer(timer, 35000);
+        startTimer(timer, 60000);
+
+        undo.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                if(troca.getTroca1()>=0) {
+                    mp.start();
+                    switch (troca.getTroca1()) {
+                        case 0:
+                            button0.setClickable(true);
+                                button0.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 1:
+                            button1.setClickable(true);
+                                button1.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 2:
+                            button2.setClickable(true);
+                                button2.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 3:
+                            button3.setClickable(true);
+                                button3.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 4:
+                            button4.setClickable(true);
+                                button4.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 5:
+                            button5.setClickable(true);
+                                button5.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 6:
+                            button6.setClickable(true);
+                                button6.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 7:
+                            button7.setClickable(true);
+                                button7.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 8:
+                            button8.setClickable(true);
+                                button8.setBackgroundResource(R.color.LightBlue);
+                            break;
+                        case 9:
+                            button9.setClickable(true);
+                                button9.setBackgroundResource(R.color.LightBlue);
+                            break;
+                    }
+
+                    troca.reseta();
+                }
+            }
+        });
 
         dica.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1283,6 +1337,7 @@ public class BubbleActivity extends AppCompatActivity {
                 }
             }
             if(!flag){
+                button.setClickable(false);
                 button.setBackgroundResource(R.color.Green);
             }else {
                 button.setBackgroundResource(R.color.LightBlue);
