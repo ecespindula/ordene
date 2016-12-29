@@ -149,24 +149,19 @@ public class BubbleActivity extends AppCompatActivity {
                             checaCerto(bubble, 4, button4);
                             break;
                         case 5:
-                            button5.setClickable(true);
-                                button5.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 5, button5);
                             break;
                         case 6:
-                            button6.setClickable(true);
-                                button6.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 6, button6);
                             break;
                         case 7:
-                            button7.setClickable(true);
-                                button7.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 7, button7);
                             break;
                         case 8:
-                            button8.setClickable(true);
-                                button8.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 8, button8);
                             break;
                         case 9:
-                            button9.setClickable(true);
-                                button9.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 9, button9);
                             break;
                     }
 

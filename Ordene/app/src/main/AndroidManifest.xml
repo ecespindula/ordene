@@ -59,10 +59,20 @@
         <activity
             android:name=".ScrollingActivity"
             android:label="@string/title_activity_scrolling"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".ChoicesTutorial" />
-        <activity android:name=".BubbleTuto" />
-        <activity android:name=".HighScores"></activity>
+        <activity
+            android:name=".ChoicesTutorial"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".BubbleTuto"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".HighScores"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
