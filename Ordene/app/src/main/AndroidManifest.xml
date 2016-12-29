@@ -62,6 +62,7 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".ChoicesTutorial" />
         <activity android:name=".BubbleTuto" />
+        <activity android:name=".HighScores"></activity>
     </application>
 
 </manifest>

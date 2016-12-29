@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(MainActivity.this, ScrollingActivity.class);
+                Intent intent = new Intent(MainActivity.this, HighScores.class);
                 startActivity(intent);
             }
         });

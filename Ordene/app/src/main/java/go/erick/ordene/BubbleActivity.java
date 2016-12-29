@@ -15,20 +15,33 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.reward.RewardedVideoAd;
 
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.content.SharedPreferences;
 
 public class BubbleActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
+    long tempo = 0;
     MediaPlayer mp, victory, defeat;
     InterstitialAd mInterstitialAd;
+    private SharedPreferences gamePrefs;
+    public static final String GAME_PREFS = "ArithmeticFile";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bubble);
+        gamePrefs = getSharedPreferences(GAME_PREFS, 0);
 
         final Troca troca = new Troca();
         int[] lista = new int[10];
@@ -65,6 +78,7 @@ public class BubbleActivity extends AppCompatActivity {
             }
         });
         requestNewInterstitial();
+
 
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
@@ -120,24 +134,19 @@ public class BubbleActivity extends AppCompatActivity {
                     mp.start();
                     switch (troca.getTroca1()) {
                         case 0:
-                            button0.setClickable(true);
-                                button0.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 0, button0);
                             break;
                         case 1:
-                            button1.setClickable(true);
-                                button1.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 1, button1);
                             break;
                         case 2:
-                            button2.setClickable(true);
-                                button2.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 2, button2);
                             break;
                         case 3:
-                            button3.setClickable(true);
-                                button3.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 3, button3);
                             break;
                         case 4:
-                            button4.setClickable(true);
-                                button4.setBackgroundResource(R.color.LightBlue);
+                            checaCerto(bubble, 4, button4);
                             break;
                         case 5:
                             button5.setClickable(true);
@@ -305,51 +314,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 1: button0.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, 1, button1);
-                            button1.setClickable(true);
                             break;
                         case 2: button0.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, 2, button2);
-                            button2.setClickable(true);
                             break;
                         case 3: button0.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, 3, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button0.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, 4, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button0.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, 5, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button0.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, 6, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button0.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, 7, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button0.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, 8, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button0.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, 9, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 0, button0);
-                    button0.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -361,6 +360,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -412,51 +412,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button1.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, 0, button0);
-                            button0.setClickable(true);
                             break;
                         case 2: button1.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, 2, button2);
-                            button2.setClickable(true);
                             break;
                         case 3: button1.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, 3, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button1.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, 4, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button1.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, 5, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button1.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, 6, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button1.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, 7, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button1.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, 8, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button1.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, 9, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 1, button1);
-                    button1.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -468,6 +458,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -517,51 +508,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button2.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, 0, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button2.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, 1, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button2.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button2.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button2.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button2.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button2.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button2.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button2.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 2, button2);
-                    button2.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -573,6 +554,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -622,51 +604,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button3.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button3.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 2: button3.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 4: button3.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button3.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button3.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button3.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button3.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button3.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 3, button3);
-                    button3.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -678,6 +650,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -727,51 +700,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button4.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button4.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button4.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 2: button4.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 5: button4.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button4.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button4.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button4.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button4.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 4, button4);
-                    button4.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -783,6 +746,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -832,51 +796,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button5.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button5.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button5.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button5.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 2: button5.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 6: button5.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button5.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button5.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button5.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 5, button5);
-                    button5.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -888,6 +842,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -937,51 +892,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button6.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button6.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button6.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button6.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button6.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 2: button6.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 7: button6.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button6.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button6.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 6, button6);
-                    button6.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -993,6 +938,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1042,51 +988,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button7.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button7.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button7.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button7.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button7.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button7.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 2: button7.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 8: button7.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 9: button7.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 7, button7);
-                    button7.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -1098,6 +1034,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1147,51 +1084,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button8.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button8.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button8.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button8.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button8.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button8.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button8.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 2: button8.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                         case 9: button8.setText(button9.getText());
                             button9.setText(texto);
                             checaCerto(bubble, bot, button9);
-                            button9.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 8, button8);
-                    button8.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -1203,6 +1130,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1252,51 +1180,41 @@ public class BubbleActivity extends AppCompatActivity {
                         case 0: button9.setText(button0.getText());
                             button0.setText(texto);
                             checaCerto(bubble, bot, button0);
-                            button0.setClickable(true);
                             break;
                         case 1: button9.setText(button1.getText());
                             button1.setText(texto);
                             checaCerto(bubble, bot, button1);
-                            button1.setClickable(true);
                             break;
                         case 3: button9.setText(button3.getText());
                             button3.setText(texto);
                             checaCerto(bubble, bot, button3);
-                            button3.setClickable(true);
                             break;
                         case 4: button9.setText(button4.getText());
                             button4.setText(texto);
                             checaCerto(bubble, bot, button4);
-                            button4.setClickable(true);
                             break;
                         case 5: button9.setText(button5.getText());
                             button5.setText(texto);
                             checaCerto(bubble, bot, button5);
-                            button5.setClickable(true);
                             break;
                         case 6: button9.setText(button6.getText());
                             button6.setText(texto);
                             checaCerto(bubble, bot, button6);
-                            button6.setClickable(true);
                             break;
                         case 7: button9.setText(button7.getText());
                             button7.setText(texto);
                             checaCerto(bubble, bot, button7);
-                            button7.setClickable(true);
                             break;
                         case 8: button9.setText(button8.getText());
                             button8.setText(texto);
                             checaCerto(bubble, bot, button8);
-                            button8.setClickable(true);
                             break;
                         case 2: button9.setText(button2.getText());
                             button2.setText(texto);
                             checaCerto(bubble, bot, button2);
-                            button2.setClickable(true);
                             break;
                     }
                     checaCerto(bubble, 9, button9);
-                    button9.setClickable(true);
                     troca.reseta();
                     if(bubble.getTrocados().isEmpty()){
                         victory.start();
@@ -1308,6 +1226,7 @@ public class BubbleActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1340,9 +1259,11 @@ public class BubbleActivity extends AppCompatActivity {
                 button.setClickable(false);
                 button.setBackgroundResource(R.color.Green);
             }else {
+                button.setClickable(true);
                 button.setBackgroundResource(R.color.LightBlue);
             }
         }else{
+            button.setClickable(true);
             button.setBackgroundResource(R.color.LightBlue);
         }
     }
@@ -1352,6 +1273,8 @@ public class BubbleActivity extends AppCompatActivity {
         cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
+                tempo = 60 - millisUntilFinished / 1000;
+                System.out.println(tempo);
             }
             public void onFinish() {
                // mTextField.setText("TIMEOUT!");
@@ -1384,5 +1307,59 @@ public class BubbleActivity extends AppCompatActivity {
 
         mInterstitialAd.loadAd(adRequest);
     }
+
+    private void setHighScore(){
+//set high score
+        List<Score> scoreStrings = new ArrayList<Score>();
+
+        long exScore = tempo;
+        if(exScore<=60){
+//we have a valid score
+            SharedPreferences.Editor scoreEdit = gamePrefs.edit();
+            DateFormat dateForm = new SimpleDateFormat("dd MMMM yyyy");
+            String dateOutput = dateForm.format(new Date());
+            String scores = gamePrefs.getString("highScores", "");
+            if(scores.length()>0){
+                //we have existing scores
+                String[] exScores = scores.split("\\|");
+                for(String eSc : exScores){
+                    String[] parts = eSc.split(" - ");
+                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                }
+                Score newScore = new Score(dateOutput, (int) exScore);
+                scoreStrings.add(newScore);
+                Collections.sort(scoreStrings);
+
+                StringBuilder scoreBuild = new StringBuilder("");
+                for(int s=0; s<scoreStrings.size(); s++){
+                    if(s>=10) break;//only want ten
+                    if(s>0) scoreBuild.append("|");//pipe separate the score strings
+                    scoreBuild.append(scoreStrings.get(s).getScoreText());
+                }
+//write to prefs
+                scoreEdit.putString("highScores", scoreBuild.toString());
+                scoreEdit.commit();
+            }
+            else{
+                //no existing scores
+                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.commit();
+            }
+        }
+    }
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+//save state
+        int exScore = (int) tempo;
+        savedInstanceState.putInt("score", exScore);
+        savedInstanceState.putInt("level", 1);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+
 
 }
