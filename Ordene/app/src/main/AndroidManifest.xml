@@ -62,17 +62,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoActionBar" />
         <activity
-            android:name=".ChoicesTutorial"
+            android:name=".ChoicesHighScore"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BubbleTuto"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".HighScores"
+            android:name=".BubbleHighScores"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".InsertionHighScores" />
+        <activity android:name=".SelectionHighScores" />
+        <activity android:name=".QuickHighScores" />
+        <activity android:name=".HeapHighScores"></activity>
     </application>
 
 </manifest>

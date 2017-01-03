@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -19,20 +16,34 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
-import static android.os.Build.VERSION_CODES.N;
+import android.content.SharedPreferences;
 
 public class HeapActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     MediaPlayer mp, defeat, victory;
     InterstitialAd mInterstitialAd;
+    long tempo = 0;
+    private SharedPreferences gamePrefs;
+    public static final String GAME_PREFS = "ArithmeticFile5";
     int N = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_heap);
+        gamePrefs = getSharedPreferences(GAME_PREFS, 0);
+
         final int[] limiteDica = {3};
         final Troca troca = new Troca();
         int[] lista = new int[10];
@@ -423,6 +434,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -617,6 +629,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -727,6 +740,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -836,6 +850,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -942,6 +957,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1049,6 +1065,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1150,6 +1167,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1249,6 +1267,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1348,6 +1367,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1447,6 +1467,7 @@ public class HeapActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1524,6 +1545,58 @@ public class HeapActivity extends AppCompatActivity {
 
     public void checa(HeapSort heap, int bot, Button button){
 
+    }
+
+    private void setHighScore(){
+//set high score
+        List<Score> scoreStrings = new ArrayList<Score>();
+
+        long exScore = tempo;
+        if(exScore<=60){
+//we have a valid score
+            SharedPreferences.Editor scoreEdit = gamePrefs.edit();
+            DateFormat dateForm = new SimpleDateFormat("dd MMMM yyyy");
+            String dateOutput = dateForm.format(new Date());
+            String scores = gamePrefs.getString("highScores", "");
+            if(scores.length()>0){
+                //we have existing scores
+                String[] exScores = scores.split("\\|");
+                for(String eSc : exScores){
+                    String[] parts = eSc.split(" - ");
+                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                }
+                Score newScore = new Score(dateOutput, (int) exScore);
+                scoreStrings.add(newScore);
+                Collections.sort(scoreStrings);
+
+                StringBuilder scoreBuild = new StringBuilder("");
+                for(int s=0; s<scoreStrings.size(); s++){
+                    if(s>=10) break;//only want ten
+                    if(s>0) scoreBuild.append("|");//pipe separate the score strings
+                    scoreBuild.append(scoreStrings.get(s).getScoreText());
+                }
+//write to prefs
+                scoreEdit.putString("highScores", scoreBuild.toString());
+                scoreEdit.commit();
+            }
+            else{
+                //no existing scores
+                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.commit();
+            }
+        }
+    }
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+//save state
+        int exScore = (int) tempo;
+        savedInstanceState.putInt("score", exScore);
+        savedInstanceState.putInt("level", 1);
+
+        super.onSaveInstanceState(savedInstanceState);
     }
 
 }

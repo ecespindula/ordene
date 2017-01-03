@@ -1,6 +1,5 @@
 package go.erick.ordene;
 
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(MainActivity.this, HighScores.class);
+                Intent intent = new Intent(MainActivity.this, ChoicesHighScore.class);
                 startActivity(intent);
             }
         });

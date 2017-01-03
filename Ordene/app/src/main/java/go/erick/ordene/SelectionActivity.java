@@ -16,16 +16,31 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import android.content.SharedPreferences;
 
 public class SelectionActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     MediaPlayer mp, victory, defeat;
     InterstitialAd mInterstitialAd;
+    long tempo = 0;
+    private SharedPreferences gamePrefs;
+    public static final String GAME_PREFS = "ArithmeticFile3";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
+        gamePrefs = getSharedPreferences(GAME_PREFS, 0);
 
         final Troca troca = new Troca();
         int[] lista = new int[10];
@@ -362,6 +377,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -481,6 +497,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -598,6 +615,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -715,6 +733,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -832,6 +851,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -949,6 +969,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1066,6 +1087,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1183,6 +1205,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1300,6 +1323,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1417,6 +1441,7 @@ public class SelectionActivity extends AppCompatActivity {
                                 .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        setHighScore();
                                         mInterstitialAd.show();
                                     }
                                 }).create().show();
@@ -1468,6 +1493,58 @@ public class SelectionActivity extends AppCompatActivity {
                 .build();
 
         mInterstitialAd.loadAd(adRequest);
+    }
+
+    private void setHighScore(){
+//set high score
+        List<Score> scoreStrings = new ArrayList<Score>();
+
+        long exScore = tempo;
+        if(exScore<=60){
+//we have a valid score
+            SharedPreferences.Editor scoreEdit = gamePrefs.edit();
+            DateFormat dateForm = new SimpleDateFormat("dd MMMM yyyy");
+            String dateOutput = dateForm.format(new Date());
+            String scores = gamePrefs.getString("highScores", "");
+            if(scores.length()>0){
+                //we have existing scores
+                String[] exScores = scores.split("\\|");
+                for(String eSc : exScores){
+                    String[] parts = eSc.split(" - ");
+                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                }
+                Score newScore = new Score(dateOutput, (int) exScore);
+                scoreStrings.add(newScore);
+                Collections.sort(scoreStrings);
+
+                StringBuilder scoreBuild = new StringBuilder("");
+                for(int s=0; s<scoreStrings.size(); s++){
+                    if(s>=10) break;//only want ten
+                    if(s>0) scoreBuild.append("|");//pipe separate the score strings
+                    scoreBuild.append(scoreStrings.get(s).getScoreText());
+                }
+//write to prefs
+                scoreEdit.putString("highScores", scoreBuild.toString());
+                scoreEdit.commit();
+            }
+            else{
+                //no existing scores
+                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.commit();
+            }
+        }
+    }
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+//save state
+        int exScore = (int) tempo;
+        savedInstanceState.putInt("score", exScore);
+        savedInstanceState.putInt("level", 1);
+
+        super.onSaveInstanceState(savedInstanceState);
     }
 
 }

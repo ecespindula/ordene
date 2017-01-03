@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ChoicesTutorial extends AppCompatActivity {
+public class ChoicesHighScore extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, BubbleActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, BubbleHighScores.class);
                 startActivity(intent);
             }
         });
@@ -34,7 +34,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, InsertionActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, InsertionHighScores.class);
                 startActivity(intent);
             }
         });
@@ -43,7 +43,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, SelectionActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, SelectionHighScores.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, QuickActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, QuickHighScores.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +61,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, HeapActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, HeapHighScores.class);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class ChoicesTutorial extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //mp.start();
-                Intent intent = new Intent(ChoicesTutorial.this, MainActivity.class);
+                Intent intent = new Intent(ChoicesHighScore.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +78,7 @@ public class ChoicesTutorial extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ChoicesTutorial.this, MainActivity.class);
+        Intent intent = new Intent(ChoicesHighScore.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }

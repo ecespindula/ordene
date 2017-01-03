@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#d2e6f7"
-    tools:context="go.erick.ordene.ChoicesTutorial">
+    tools:context="go.erick.ordene.ChoicesHighScore">
 
     <Button
         android:text="Selection Sort"
