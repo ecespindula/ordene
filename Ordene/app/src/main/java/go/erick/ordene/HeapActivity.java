@@ -60,6 +60,7 @@ public class HeapActivity extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
         final ImageView undo =  (ImageView) findViewById(R.id.undo);
+        final ImageView passos = (ImageView) findViewById(R.id.passos);
 
         mp = MediaPlayer.create(HeapActivity.this, R.raw.click);
         victory = MediaPlayer.create(HeapActivity.this, R.raw.victory);
@@ -120,6 +121,22 @@ public class HeapActivity extends AppCompatActivity {
         }
 
         startTimer(timer, 100000);
+
+        passos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                cancelTimer();
+                new AlertDialog.Builder(HeapActivity.this)
+                        .setTitle("Heap Sort")
+                        .setMessage("1)Selecione o último botão da primeira linha; \n\n2)Caso um dos botões laranjas seja maior,troque-os e vá para a posição anterior (Caso os dois sejam maiores, troque com o maior valor entre eles);\n\n3)Caso os dois sejam menores, desselecione e vá para a posição anterior; \n\n4)Repita o passo 2 (caso o valor trocado ainda esteja na primeira linha, repita o processo com ele);\n\n5)Quando chegar ao primeiro valor, note que ele é o maior número do vetor, troque-o com a última posição;\n\n6)Agora troque o primeiro valor com o segundo e caso o valor trocado ainda esteja na primeira linha, repita o processo com ele;\n\n7)Novamente, o primeiro vetor é o maior número do vetor, troque-o com o última posição (que não está verde);\n\n8)Repita a partir do passo 5 até que o vetor esteja totalmente ordenado.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startTimer(timer, 100000 - (int)tempo*1000);
+                            }
+                        }).create().show();
+            }
+        });
 
         undo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1488,6 +1505,7 @@ public class HeapActivity extends AppCompatActivity {
         cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
+                tempo = 100 - millisUntilFinished / 1000;
             }
             public void onFinish() {
                 // mTextField.setText("TIMEOUT!");
@@ -1562,8 +1580,8 @@ public class HeapActivity extends AppCompatActivity {
                 //we have existing scores
                 String[] exScores = scores.split("\\|");
                 for(String eSc : exScores){
-                    String[] parts = eSc.split(" - ");
-                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                    String[] parts = eSc.split(" segundos - ");
+                    scoreStrings.add(new Score(parts[1], Integer.parseInt(parts[0])));
                 }
                 Score newScore = new Score(dateOutput, (int) exScore);
                 scoreStrings.add(newScore);
@@ -1581,7 +1599,7 @@ public class HeapActivity extends AppCompatActivity {
             }
             else{
                 //no existing scores
-                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.putString("highScores", ""+exScore+" segundos - "+dateOutput);
                 scoreEdit.commit();
             }
         }

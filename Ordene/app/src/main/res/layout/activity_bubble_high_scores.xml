@@ -54,16 +54,5 @@
         android:textColor="@color/Red"
         android:textStyle="normal|bold" />
 
-    <TextView
-        android:text="(Em segundos)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView6"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/Red"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true" />
-
 
 </RelativeLayout>

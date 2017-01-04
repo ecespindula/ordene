@@ -1,5 +1,6 @@
 package go.erick.ordene;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -8,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -59,6 +61,7 @@ public class BubbleActivity extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
         final ImageView undo =  (ImageView) findViewById(R.id.undo);
+        final ImageView passos = (ImageView) findViewById(R.id.passos);
 
         mp = MediaPlayer.create(BubbleActivity.this, R.raw.click);
         victory = MediaPlayer.create(BubbleActivity.this, R.raw.victory);
@@ -127,6 +130,24 @@ public class BubbleActivity extends AppCompatActivity {
         checaCerto(bubble, 9, button9);
 
         startTimer(timer, 60000);
+
+        passos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                cancelTimer();
+                new AlertDialog.Builder(BubbleActivity.this)
+                        .setTitle("Bubble Sort")
+                        .setMessage("1)Percorra o vetor a partir da primeira posição; \n\n2)Se o valor da próxima posição for menor, troque; \n\n3)Parta para a posição seguinte e repita o passo 2; \n\n4)Chegando na última posição, volte ao início caso tenha feito ao menos uma troca; \n\n5)Caso chegue ao fim sem realizar um troca, o vetor então está ordenado.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startTimer(timer, 60000 - (int)tempo*1000);
+                            }
+                        }).create().show();
+            }
+        });
+
+
 
         undo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1269,7 +1290,6 @@ public class BubbleActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
                 tempo = 60 - millisUntilFinished / 1000;
-                System.out.println(tempo);
             }
             public void onFinish() {
                // mTextField.setText("TIMEOUT!");
@@ -1295,6 +1315,7 @@ public class BubbleActivity extends AppCompatActivity {
             cTimer.cancel();
     }
 
+
     private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
@@ -1318,8 +1339,8 @@ public class BubbleActivity extends AppCompatActivity {
                 //we have existing scores
                 String[] exScores = scores.split("\\|");
                 for(String eSc : exScores){
-                    String[] parts = eSc.split(" - ");
-                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                    String[] parts = eSc.split(" segundos - ");
+                    scoreStrings.add(new Score(parts[1], Integer.parseInt(parts[0])));
                 }
                 Score newScore = new Score(dateOutput, (int) exScore);
                 scoreStrings.add(newScore);
@@ -1337,7 +1358,7 @@ public class BubbleActivity extends AppCompatActivity {
             }
             else{
                 //no existing scores
-                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.putString("highScores", ""+exScore+" segundos - "+dateOutput);
                 scoreEdit.commit();
             }
         }
@@ -1354,6 +1375,10 @@ public class BubbleActivity extends AppCompatActivity {
 
         super.onSaveInstanceState(savedInstanceState);
     }
+
+
+
+
 
 
 

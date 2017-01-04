@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:text='1)Percorra o vetor a partir da primeira posição; \n2)Se o valor da próxima posição for menor, troque; \n3)Parta para a posição seguinte e repita o passo 2; \n4)Chegando na última posição, volte ao início caso tenha feito ao menos uma troca; \n5)Caso chegue ao fim sem realizar um troca, o vetor então está ordenado.'
+        android:layout_width="wrap_content"
+        android:layout_height="381dp"
+        android:id="@+id/textView8"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+</LinearLayout>
+

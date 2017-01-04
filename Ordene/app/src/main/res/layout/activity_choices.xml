@@ -19,11 +19,11 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_below="@+id/insertion"
         android:layout_marginTop="30dp"
-        android:fontFamily="casual"
         android:typeface="normal"
-        android:textSize="24sp"
-        android:textColor="@color/Red"
-        android:textStyle="normal|bold" />
+        android:textSize="30sp"
+        android:textColor="@color/Orange"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true" />
 
     <Button
         android:text="Bubble Sort"
@@ -31,15 +31,14 @@
         android:layout_height="wrap_content"
         android:id="@+id/bubble"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_below="@+id/imageView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
-        android:fontFamily="casual"
         android:typeface="normal"
-        android:textSize="24sp"
-        android:textColor="@color/Red"
-        android:textStyle="normal|bold" />
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textColor="@color/Orange" />
 
     <Button
         android:text="Insertion Sort"
@@ -51,11 +50,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
-        android:fontFamily="casual"
         android:typeface="normal"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:textColor="@color/Orange"
         android:textStyle="normal|bold"
-        android:textColor="@color/Red" />
+        android:textAllCaps="true" />
 
     <Button
         android:text="Voltar"
@@ -67,27 +66,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="16dp"
-        android:fontFamily="casual"
-        android:textSize="24sp"
         android:typeface="normal"
-        android:textColor="@color/Red"
-        android:textStyle="normal|bold" />
-
-    <Button
-        android:text="Heap Sort"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/heap"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_above="@+id/voltar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="55dp"
-        android:fontFamily="casual"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textColor="@color/Red"
         android:textStyle="normal|bold"
-        android:typeface="normal" />
+        android:textAllCaps="true" />
 
     <Button
         android:text="Quick Sort"
@@ -95,14 +78,30 @@
         android:layout_height="wrap_content"
         android:id="@+id/quick"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:fontFamily="casual"
         android:typeface="normal"
-        android:textSize="24sp"
-        android:layout_below="@+id/selection"
-        android:layout_above="@+id/heap"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:textSize="30sp"
+        android:textColor="@color/Orange"
         android:textStyle="normal|bold"
-        android:textColor="@color/Red" />
+        android:textAllCaps="true"
+        android:layout_marginTop="26dp"
+        android:layout_below="@+id/selection"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Heap Sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heap"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:typeface="normal"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textAllCaps="true"
+        android:textColor="@color/Orange"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/quick"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

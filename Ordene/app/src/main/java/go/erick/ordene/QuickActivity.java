@@ -57,6 +57,7 @@ public class QuickActivity extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
         final ImageView undo =  (ImageView) findViewById(R.id.undo);
+        final ImageView passos = (ImageView) findViewById(R.id.passos);
 
         mp = MediaPlayer.create(QuickActivity.this, R.raw.click);
         victory = MediaPlayer.create(QuickActivity.this, R.raw.victory);
@@ -114,6 +115,22 @@ public class QuickActivity extends AppCompatActivity {
         quick.sort();
         button0.setBackgroundResource(R.color.Orange);
         startTimer(timer, 90000);
+
+        passos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                cancelTimer();
+                new AlertDialog.Builder(QuickActivity.this)
+                        .setTitle("Quick Sort")
+                        .setMessage("1)Botão laranja = Pivô; \n\n2)Compare o pivô com as próximas posições até que encontre um número maior, então selecione-o; \n\n3)Caso não encontre um número maior, troque o pivô com a última posição e volte ao passo 1; \n\n4)Agora,compare os números partindo da última posição até a primeira com o pivô até encontrar um número menor que o pivô, troque-o com o maior e repita o passo 2;\n\n5) Caso não encontre um número menor, desselecione o número maior e troque o pivô com o número anterior a ele. Repita o processo;\n\n 6) Caso o novo pivô esteja à esquerda do antigo pivô,no passo 4 compare com os números partindo da posição do antigo pivô até a primeira;\n\n 7)Quando não tiver mais pivôs, o vetor estará ordenado.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startTimer(timer, 90000 - (int)tempo*1000);
+                            }
+                        }).create().show();
+            }
+        });
 
         undo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1566,6 +1583,7 @@ public class QuickActivity extends AppCompatActivity {
         cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTextField.setText("" + millisUntilFinished / 1000);
+                tempo = 90 - millisUntilFinished / 1000;
             }
             public void onFinish() {
                 // mTextField.setText("TIMEOUT!");
@@ -1614,8 +1632,8 @@ public class QuickActivity extends AppCompatActivity {
                 //we have existing scores
                 String[] exScores = scores.split("\\|");
                 for(String eSc : exScores){
-                    String[] parts = eSc.split(" - ");
-                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                    String[] parts = eSc.split(" segundos - ");
+                    scoreStrings.add(new Score(parts[1], Integer.parseInt(parts[0])));
                 }
                 Score newScore = new Score(dateOutput, (int) exScore);
                 scoreStrings.add(newScore);
@@ -1633,7 +1651,7 @@ public class QuickActivity extends AppCompatActivity {
             }
             else{
                 //no existing scores
-                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.putString("highScores", ""+exScore+" segundos - "+dateOutput);
                 scoreEdit.commit();
             }
         }

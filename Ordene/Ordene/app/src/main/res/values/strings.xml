@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Ordene</string>
-    <string name="title_activity_bubble">BubbleActivity</string>
-    <string name="title_activity_insertion">Insertion</string>
-    <string name="title_activity_selection">SelectionActivity</string>
-    <string name="title_activity_merge">MergeActivity</string>
-    <string name="title_activity_heap">HeapActivity</string>
-</resources>

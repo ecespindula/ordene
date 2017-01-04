@@ -22,6 +22,6 @@ public class Score implements Comparable<Score>{
 
     public String getScoreText()
     {
-        return scoreDate+" - "+scoreNum;
+        return scoreNum+" segundos - "+scoreDate;
     }
 }

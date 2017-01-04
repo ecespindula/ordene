@@ -58,6 +58,7 @@ public class SelectionActivity extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
         final ImageView undo =  (ImageView) findViewById(R.id.undo);
+        final ImageView passos = (ImageView) findViewById(R.id.passos);
 
         mp = MediaPlayer.create(SelectionActivity.this, R.raw.click);
         victory = MediaPlayer.create(SelectionActivity.this, R.raw.victory);
@@ -117,6 +118,22 @@ public class SelectionActivity extends AppCompatActivity {
             System.out.println(selection.getTrocados().get(i).getTrocado1()+" "+selection.getTrocados().get(i).getTrocado2());
         }
         startTimer(timer, 60000);
+
+        passos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                cancelTimer();
+                new AlertDialog.Builder(SelectionActivity.this)
+                        .setTitle("Selection Sort")
+                        .setMessage("1)Encontre o menor valor do vetor; \n\n2)Troque-o com o primeiro valor do vetor; \n\n3)Agora procure o próximo menor valor e troque-o com o da segunda posição; \n\n4)Continue sucessivamente ate que o vetor esteja ordenado.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startTimer(timer, 60000 - (int)tempo*1000);
+                            }
+                        }).create().show();
+            }
+        });
 
         undo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1461,6 +1478,7 @@ public class SelectionActivity extends AppCompatActivity {
     void startTimer(final TextView mTextField, int time) {
         cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
+                tempo = 60 - millisUntilFinished / 1000;
                 mTextField.setText("" + millisUntilFinished / 1000);
             }
             public void onFinish() {
@@ -1510,8 +1528,8 @@ public class SelectionActivity extends AppCompatActivity {
                 //we have existing scores
                 String[] exScores = scores.split("\\|");
                 for(String eSc : exScores){
-                    String[] parts = eSc.split(" - ");
-                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                    String[] parts = eSc.split(" segundos - ");
+                    scoreStrings.add(new Score(parts[1], Integer.parseInt(parts[0])));
                 }
                 Score newScore = new Score(dateOutput, (int) exScore);
                 scoreStrings.add(newScore);
@@ -1529,7 +1547,7 @@ public class SelectionActivity extends AppCompatActivity {
             }
             else{
                 //no existing scores
-                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.putString("highScores", ""+exScore+" segundos - "+dateOutput);
                 scoreEdit.commit();
             }
         }

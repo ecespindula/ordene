@@ -59,6 +59,8 @@ public class InsertionActivity extends AppCompatActivity {
         final TextView timer = (TextView) findViewById(R.id.textTimer);
         final ImageView dica =  (ImageView) findViewById(R.id.dica);
         final ImageView undo =  (ImageView) findViewById(R.id.undo);
+        final ImageView passos = (ImageView) findViewById(R.id.passos);
+
         mp = MediaPlayer.create(InsertionActivity.this, R.raw.click);
         victory = MediaPlayer.create(InsertionActivity.this, R.raw.victory);
         defeat = MediaPlayer.create(InsertionActivity.this, R.raw.defeat);
@@ -124,6 +126,22 @@ public class InsertionActivity extends AppCompatActivity {
         checaCerto(insertion, 8, button8);
         checaCerto(insertion, 9, button9);
         startTimer(timer, 60000);
+
+        passos.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                cancelTimer();
+                new AlertDialog.Builder(InsertionActivity.this)
+                        .setTitle("Insertion Sort")
+                        .setMessage("1)Percorra o vetor da esquerda para a direita a partir da primeira posição; \n\n2)Se o valor da posição atual for menor que o da esquerda, troque; \n\n3)Continue comparando o valor trocado com os valores a esquerda, trocando se for menor; \n\n4)Chegando na última posição, o vetor já deve estar ordenado.")
+                        .setCancelable(false)
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startTimer(timer, 60000 - (int)tempo*1000);
+                            }
+                        }).create().show();
+            }
+        });
 
         undo.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -1371,6 +1389,7 @@ public class InsertionActivity extends AppCompatActivity {
     void startTimer(final TextView mTextField, int time) {
         cTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
+                tempo = 60 - millisUntilFinished / 1000;
                 mTextField.setText("" + millisUntilFinished / 1000);
             }
             public void onFinish() {
@@ -1420,8 +1439,8 @@ public class InsertionActivity extends AppCompatActivity {
                 //we have existing scores
                 String[] exScores = scores.split("\\|");
                 for(String eSc : exScores){
-                    String[] parts = eSc.split(" - ");
-                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                    String[] parts = eSc.split(" segundos - ");
+                    scoreStrings.add(new Score(parts[1], Integer.parseInt(parts[0])));
                 }
                 Score newScore = new Score(dateOutput, (int) exScore);
                 scoreStrings.add(newScore);
@@ -1439,7 +1458,7 @@ public class InsertionActivity extends AppCompatActivity {
             }
             else{
                 //no existing scores
-                scoreEdit.putString("highScores", ""+dateOutput+" - "+exScore);
+                scoreEdit.putString("highScores", ""+exScore+" segundos - "+dateOutput);
                 scoreEdit.commit();
             }
         }
